@@ -2,7 +2,7 @@
 
 v0.0.1
 
-End goal: Build a full-stack application with Node and Express where the user can authenticate via the Twitter and then data from the Twitter API is displayed to the user.
+End goal: Build a full-stack application with Node and Express where the user can authenticate via Twitter and then data from the Twitter API is displayed to the user.
 
 ## Pre Work
 
