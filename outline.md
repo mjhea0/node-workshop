@@ -2,7 +2,7 @@
 
 v0.0.1
 
-End goal: Build a full-stack application with Node and Express that authorizes against the Twitter API, grabs data using the user's token from Twitter, and then displays a chart with the data to the end user.
+End goal: Build a full-stack application with Node and Express where the user can authenticate via the Twitter and then data from the Twitter API is displayed to the user.
 
 ## Pre Work
 
@@ -36,7 +36,6 @@ Happy to meet at least once before the first workshop starts to help you through
 1. Arrays, Objects, and Loops
 1. Callbacks
 1. Higher-Order Functions
-1. AJAX
 1. Intro to Node
 1. Interacting with the filesystem
 1. Intro to Express
@@ -55,6 +54,7 @@ Happy to meet at least once before the first workshop starts to help you through
 ## Day 3
 
 1. Deployment
+1. Express Boilderplate
 1. Client-side Requests
 1. Auth w/Passport
 1. Full-stack Project
