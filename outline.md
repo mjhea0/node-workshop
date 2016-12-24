@@ -54,7 +54,7 @@ Happy to meet at least once before the first workshop starts to help you through
 ## Day 3
 
 1. Deployment
-1. Express Boilderplate
+1. Express Boilerplate
 1. Client-side Requests
 1. Auth w/Passport
 1. Full-stack Project
