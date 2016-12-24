@@ -13,6 +13,7 @@ Make sure you have Node version 6 or greater and NPM version 3 or greater::
 ```sh
 $ node -v
 v7.2.1
+
 $ npm -v
 3.10.9
 ```
