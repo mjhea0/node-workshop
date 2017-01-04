@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.1
+v0.0.2
 
 End goal: Build a full-stack application with Node and Express where the user can authenticate via Twitter and then data from the Twitter API is displayed to the user.
 
@@ -33,29 +33,95 @@ Happy to meet at least once before the first workshop starts to help you through
 
 ## Day 1
 
-1. JavaScript Review
-1. Arrays, Objects, and Loops
-1. Callbacks
-1. Higher-Order Functions
-1. Intro to Node
+### JavaScript Review
+
+1. Variable Naming Conventions
+1. Data Types
+1. Arrays
+1. Objects
+1. Conditionals
+1. Loops
+1. Scope
+
+### Higher-Order Functions
+
+1. Definition
+1. Examples
+  - `forEach`
+  - `map`
+  - `filter`
+  - `reduce`
+
+### Callbacks
+
+1. Definition
+1. Example
+
+### Intro to Node
+
+1. What is Node?
+1. Node REPL
 1. Interacting with the filesystem
-1. Intro to Express
-1. CSV Parsing
-1. JSON Parsing
+  - `fs` and `path`
+  - CSV Parsing
+  - JSON Parsing
+
+### Project: API
+
+1. Connect to API
+1. Parse Data
+
+### Homework
+
+1. TBD
 
 ## Day 2
 
-1. Express Routing
-1. CRUD
-1. MongoDB
+### Intro to Express
+
+1. What is Express?
+1. Project Structure
+1. Examples:
+  - CSV Parsing
+  - JSON Parsing
+
+### Express Routing
+
+1. HTTP and RESTful APIs
+1. CRUD Project
+
+### MongoDB
+
+1. SQL vs NoSQL
+1. Mongo and Mongoose Setup
+
+### Full Stack
+
 1. Client vs. Server
 1. Server-side Templating
 1. Full-stack App
 
+### Homework
+
+1. TBD
+
 ## Day 3
 
-1. Deployment
-1. Express Boilerplate
-1. Client-side Requests
-1. Auth w/Passport
-1. Full-stack Project
+### Deployment
+
+1. Project Setup
+1. DB Setup
+1. Deploy!
+
+### Express Boilerplate
+
+1. What is it?
+1. How to use it
+
+### Auth w/Passport
+
+1. TBD
+
+### Full-stack Project
+
+1. TBD
