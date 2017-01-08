@@ -35,11 +35,7 @@ Happy to meet at least once before the first workshop starts to help you through
 
 1. [JavaScript Review](lessons/01-js_review.md)
 1. [Higher-Order Functions](lessons/02-hof.md)
-
-### Callbacks
-
-1. Definition
-1. Example
+1. [Callbacks](lessons/03-callbacks.md)
 
 ### Intro to Node
 

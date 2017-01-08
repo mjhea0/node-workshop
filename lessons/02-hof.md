@@ -70,7 +70,7 @@ To use `filter()`, we passed in an array of ages, an upper limit, and the callba
 
 Thus far, we've looked at higher order functions that we defined. Let's look at some that are built in to JavaScript - `forEach`, `map`, and `filter`.
 
-> **NOTE:** For more on higher order function, check out [this video](https://www.youtube.com/watch?v=BMUiFMZr7vk).
+> **NOTE:** For more on higher order functions, check out [this video](https://www.youtube.com/watch?v=BMUiFMZr7vk).
 
 ## `forEach`
 
