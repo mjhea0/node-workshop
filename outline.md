@@ -33,15 +33,7 @@ Happy to meet at least once before the first workshop starts to help you through
 
 ## Day 1
 
-### JavaScript Review
-
-1. Variable Naming Conventions
-1. Data Types
-1. Arrays
-1. Objects
-1. Conditionals
-1. Loops
-1. Scope
+1. [JavaScript Review]()
 
 ### Higher-Order Functions
 
