@@ -66,36 +66,41 @@ Things to note:
 
 1. Notice how we separated the login (function definition) from the actual use (functional invocation). Essentially, you could write a number or reusable helper functions in the *utils.js* file so that you don't clutter your other files with unnecessary logic.
 1. What happens if we pass in `true` instead of an array? Try it! You should see `Please use an array of strings`. What's happening? Describe it to yourself out-loud or to a friend
-1. Exercise: You often do not know how long something can take to process. Callbacks introduce blocking into JavaScript, since nothing happens until the callback function is invoked. Test this out on your own with the following code:
 
-  ```javascript
-  function createArray() {
-    var arr = [];
-    for (var i = 1; i <= 1000; i++) {
-       arr.push(i);
-    }
-    setTimeout(function() {
-      return arr;
-    }, 5000);
+Your turn!
+
+You often do not know how long something can take to process. Callbacks introduce blocking into JavaScript, since nothing happens until the callback function is invoked.
+
+Test this out on your own with the following code:
+
+```javascript
+function createArray() {
+  var arr = [];
+  for (var i = 1; i <= 1000; i++) {
+     arr.push(i);
   }
+  setTimeout(function() {
+    return arr;
+  }, 5000);
+}
 
-  function getEvenNumbers(arr) {
-    console.log(arr);
-    return arr.filter(function(num){
-      return num % 2 === 0;
-    });
-  }
+function getEvenNumbers(arr) {
+  console.log(arr);
+  return arr.filter(function(num){
+    return num % 2 === 0;
+  });
+}
 
 
-  var numberArray = createArray();
-  var evenNumberArray = getEvenNumbers(numberArray);
-  console.log(evenNumberArray.length);
-  ```
+var numberArray = createArray();
+var evenNumberArray = getEvenNumbers(numberArray);
+console.log(evenNumberArray.length);
+```
 
-  What happens when you run it? This highlights and issue with asynchronous code:
-    - Asynchronous - The JavaScript engine starts executing your code, moving line by line without pausing
-    - Synchronous - The JavaScript engine will wait before moving on
+What happens when you run it? This highlights and issue with asynchronous code:
+  - Asynchronous - The JavaScript engine starts executing your code, moving line by line without pausing
+  - Synchronous - The JavaScript engine will wait before moving on
 
-  So, in the above code, the `setTimeout()` simulates a long-winded process. If you do not wait for it to finish, `undefined` is passed in as the argument to `getEvenNumbers()`.  
+So, in the above code, the `setTimeout()` simulates a long-winded process. If you do not wait for it to finish, `undefined` is passed in as the argument to `getEvenNumbers()`.  
 
-  Add a callback to `createArray()` to fix the issue.
+Add a callback to `createArray()` to fix the issue.
