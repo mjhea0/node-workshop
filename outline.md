@@ -34,15 +34,7 @@ Happy to meet at least once before the first workshop starts to help you through
 ## Day 1
 
 1. [JavaScript Review](lessons/01-js_review.md)
-
-### Higher-Order Functions
-
-1. Definition
-1. Examples
-  - `forEach`
-  - `map`
-  - `filter`
-  - `reduce`
+1. [Higher-Order Functions](lessons/02-hof.md)
 
 ### Callbacks
 
