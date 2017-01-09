@@ -8,7 +8,7 @@ Build a full-stack application with Node and Express where the user can authenti
 
 ### Example Code
 
-Make sure to create a new directory on your machine called "node-workshop" to house all of your projects for this workshops. Each individual assignment should be placed within that directory. Make sure to add a git repo to each directory.
+Make sure to create a new directory on your machine called "node-workshop" to house all of your projects for these workshops. Each individual assignment should be placed within that directory. Make sure to add a git repo to each directory.
 
 ## Pre Work
 
@@ -43,8 +43,9 @@ Happy to meet at least once before the first workshop starts to help you through
 1. [Higher-Order Functions](lessons/02-hof.md)
 1. [Callbacks](lessons/03-callbacks.md)
 1. [Intro to Node](lessons/04-node-intro.md)
+1. [Intro to Express](lessons/05-express-intro.md)
 
-### Project: API
+### Project: Movie Mania
 
 1. Connect to API
 1. Parse Data
@@ -55,15 +56,7 @@ Happy to meet at least once before the first workshop starts to help you through
 
 ## Day 2
 
-### Intro to Express
-
-1. What is Express?
-1. Project Structure
-1. Examples:
-  - CSV Parsing
-  - JSON Parsing
-
-### Express Routing
+### RESTful APIs
 
 1. HTTP and RESTful APIs
 1. CRUD Project
