@@ -146,6 +146,75 @@ Your Turn!
 
 ## Nodemon
 
-Moving on, do you like having to kill the server and then restarting it every time you make a change to your code? I hope not. This will get old. Plus, those seconds it takes to do that will add up quickly. So, let's speed up our workflow. 
+Moving on, we do not want to have to kill the server and then restart it each and every we make changes to the code? This will get old. Plus, those seconds it takes to do that will add up quickly. So, let's speed up our workflow.
+
+First, install [Nodemon](https://nodemon.io/):
+
+```sh
+$ npm install nodemon --global
+```
+
+The `--global` flag installs this in our global packages so that way it's available to all our Node projects. Do you think we should also install this locally and add dependency to the *package.json* file? Why or why not?
+
+Next, add an npm start script to *package.json*:
+
+```json
+{
+  "name": "express-intro",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
+```
+
+Kill the server, and then run Nodemon:
+
+```sh
+$ nodemon
+[nodemon] 1.11.0
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `node app.js`
+Starting a server on localhost:3000
+```
+
+Now, when you make any changes to your code, the server will auto restart:
+
+```sh
+[nodemon] restarting due to changes...
+[nodemon] starting `node app.js`
+Starting a server on localhost:3000
+```
+
+What if we want the browser window to also auto refresh?
 
 ## Express Calculator
+
+Let's build a basic calculator together...
+
+1. Create a new project.
+1. Before you write any code, make sure everything is wired up correctly and get a sanity check. Why is this important?
+1. Set up the following four routes:
+  - `/calc/add/:num1/num2`
+  - `/calc/sub/:num1/num2`
+  - `/calc/mult/:num1/num2`
+  - `/calc/div/:num1/num2`
+1. Respond with JSON:
+
+  ```json
+  {
+    "status": "200",
+    "data": {
+      "operator": "add",
+      "num1": "9",
+      "num2": "4",
+      "solution": "27"
+    }
+  }
+  ```
+
+1. Refactor your code to use only one route rather than four separate routes.
