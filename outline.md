@@ -47,8 +47,7 @@ Happy to meet at least once before the first workshop starts to help you through
 
 ### Project: Movie Mania
 
-1. Connect to API
-1. Parse Data
+1. TBD
 
 ### Homework
 
