@@ -28,7 +28,7 @@ console.log(convert(siteNames));
 
 Now, let's add in a callback:
 
-**main.js**:
+*main.js*:
 
 ```javascript
 var convert = require('./utils.js').convert;
@@ -44,7 +44,7 @@ convert(siteNames, function(err, res) {
 });
 ```
 
-**utils.js**:
+*utils.js*:
 
 ```javascript
 function convert(arr, callback) {

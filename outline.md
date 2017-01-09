@@ -1,8 +1,14 @@
 # Outline
 
-v0.0.2
+v0.0.3
 
-End goal: Build a full-stack application with Node and Express where the user can authenticate via Twitter and then data from the Twitter API is displayed to the user.
+### End goal
+
+Build a full-stack application with Node and Express where the user can authenticate via Twitter and then data from the Twitter API is displayed to the user.
+
+### Example Code
+
+Make sure to create a new directory on your machine called "node-workshop" to house all of your projects for this workshops. Each individual assignment should be placed within that directory. Make sure to add a git repo to each directory.
 
 ## Pre Work
 
@@ -36,15 +42,7 @@ Happy to meet at least once before the first workshop starts to help you through
 1. [JavaScript Review](lessons/01-js_review.md)
 1. [Higher-Order Functions](lessons/02-hof.md)
 1. [Callbacks](lessons/03-callbacks.md)
-
-### Intro to Node
-
-1. What is Node?
-1. Node REPL
-1. Interacting with the filesystem
-  - `fs` and `path`
-  - CSV Parsing
-  - JSON Parsing
+1. [Intro to Node](lessons/04-node-intro.md)
 
 ### Project: API
 
