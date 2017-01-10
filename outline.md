@@ -39,11 +39,29 @@ Happy to meet at least once before the first workshop starts to help you through
 
 ## Day 1
 
+- Review, Higher-Order Functions, Callbacks
+- ~ 4 hours
+
 1. [JavaScript Review](lessons/01-js_review.md)
 1. [Higher-Order Functions](lessons/02-hof.md)
 1. [Callbacks](lessons/03-callbacks.md)
+1. Homework - TBD
+
+## Day 2
+
 1. [Intro to Node](lessons/04-node-intro.md)
 1. [Intro to Express](lessons/05-express-intro.md)
+
+### RESTful APIs
+
+1. HTTP and RESTful APIs
+1. CRUD Project
+
+### Todo
+
+1. template strings
+1. for...of vs for...in
+1. callback hell and promises
 
 ### Project: Movie Mania
 
@@ -53,12 +71,7 @@ Happy to meet at least once before the first workshop starts to help you through
 
 1. TBD
 
-## Day 2
-
-### RESTful APIs
-
-1. HTTP and RESTful APIs
-1. CRUD Project
+## Day 3
 
 ### MongoDB
 
@@ -70,6 +83,10 @@ Happy to meet at least once before the first workshop starts to help you through
 1. Client vs. Server
 1. Server-side Templating
 1. Full-stack App
+
+### Project
+
+1. TBD
 
 ### Homework
 
