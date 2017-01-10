@@ -243,14 +243,14 @@ The `default` block gets executed if the result of the `expression` doesn't matc
 
 ### truthy
 
-Everything in JavaScript is truthy except:.
+Everything in JavaScript is truthy except:
 
-`null`
-`undefined`
-`0`
-`''`
-`false`
-`NaN`
+- `null`
+- `undefined`
+- `0`
+- `''`
+- `false`
+- `NaN`
 
 ## Loops
 
