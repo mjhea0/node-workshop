@@ -110,7 +110,7 @@ const name = "Michael";
 name = 'Jeremy'     // what happens here?
 ```
 
-Keep in mind that you add and update properties:
+Keep in mind that you can still add and update properties:
 
 ```javascript
 const myFavoriteObject = {
@@ -120,8 +120,14 @@ const myFavoriteObject = {
 myFavoriteObject = 'bar';                 // Will this work?
 myFavoriteObject.someProperty = 'bar';    // What about this?
 ```
-
 `const` is also bound to a block.
+
+---
+
+Your turn!
+
+1. `const` vs `let` vs `var` - when should you use each?
+1. For more, check out the video [var, let and const - What, why and how](https://youtu.be/sjyJBL5fkp8?list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm).
 
 ## Functions
 

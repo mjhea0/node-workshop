@@ -191,3 +191,23 @@ Your Turn!
 
 1. What's happening here - `return car.make === 'Ford';`? Describe it to yourself out-loud or to a friend. Then compare each method used above. Essentially, if you find yourself iterating through an array and then testing to see if element meets a certain condition, then you should use a `filter()`.
 1. Exercise: Given an array of letters (`['a', 'd', 'F', 'z']`), use `filter()`  to return just the vowels.
+
+## Arrow Functions
+
+Arrow Functions are have a shorter syntax than function expressions in es6:
+
+```javascript
+let foo = () => {
+  console.log("bar");
+};
+
+var bar = function() {
+  console.log("foo");
+};
+```
+
+Besides making the code shorter, they also lexically bind `this` inside the function. Put another way, arrow functions capture the value of `this` from the enclosing context.
+
+What?
+
+Let's refactor some code!
