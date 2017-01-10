@@ -97,6 +97,8 @@ function foo() {
 }
 ```
 
+`let` is pretty much `var` with block-level scope.
+
 > **NOTE:** If you declare a variable with `let` outside of a block, it will have global scope. We'll talk more about block scoping shortly.
 
 ### `const`
@@ -399,24 +401,46 @@ Scope simply refers to the variables and functions that your program has access 
 
 Things to note:
 
-- Variables defined outside of any functions are part of the *global* scope and can be accessed anywhere and at any time. In the following function, you have access to `foo` at any time, inside or outside the function:
-
-  ```javascript
-  var foo = 'bar';
-
-  function fooBar() {
-    console.log(foo);
-  }
-  ```
-
-- Variables defined within a function are part of that function's *local* scope. Local variables are created each time a function is called. In this function, you only have access to `foo` inside the function:
-
-  ```javascript
-  function fooBar() {
-    var foo = 'bar';
-    console.log(foo);
-  }
-  ```
-
 - Descendant (child) scopes are always aware of the variables within their ancestor's (parent) scope. Ancestor scopes are *not* aware of the variables within their descendants' scopes.
 - You can pass variable values outside of a function by returning its value.
+
+### Global
+
+Variables defined outside of any functions are part of the *global* scope and can be accessed anywhere and at any time. In the following function, you have access to `foo` at any time, inside or outside the function:
+
+```javascript
+var foo = 'bar';
+
+function fooBar() {
+  console.log(foo);
+}
+```
+
+### Function-level
+
+Variables defined within a function are part of that function's *local, function-level* scope. Local variables are created each time a function is called. In this function, you only have access to `foo` inside the function:
+
+```javascript
+function fooBar() {
+  var foo = 'bar';
+  console.log(foo);
+}
+```
+
+### Block-level
+
+es6 introduced a new type of local scope called *block-level* scope. With it, variables declared with `let` and `const`, inside a code block, only exist within that block.
+
+Let's look at a quick example...
+
+```javascript
+for (var i = 0; i < 10; i++) {
+  // pass
+}
+console.log(i)    // what will this result in?
+
+for (let j = 0, j < 10; j++) {
+  // pass
+}
+console.log(j)    // what will this result in?
+```
