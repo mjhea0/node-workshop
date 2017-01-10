@@ -98,8 +98,9 @@ console.log(evenNumberArray.length);
 ```
 
 What happens when you run it? This highlights and issue with asynchronous code:
-  - Asynchronous - The JavaScript engine starts executing your code, moving line by line without pausing
-  - Synchronous - The JavaScript engine will wait before moving on
+
+- Asynchronous - The JavaScript engine starts executing your code, moving line by line without pausing
+- Synchronous - The JavaScript engine will wait before moving on
 
 So, in the above code, the `setTimeout()` simulates a long-winded process. If you do not wait for it to finish, `undefined` is passed in as the argument to `getEvenNumbers()`.  
 

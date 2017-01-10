@@ -210,4 +210,4 @@ Besides making the code shorter, they also lexically bind `this` inside the func
 
 What?
 
-Let's refactor some code!
+We'll get to that when we start working with multiple API calls with multiple callbacks. 

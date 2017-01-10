@@ -32,7 +32,7 @@ So, why would you want to use Node for web development?
 
 1. One language on the client and server
 1. Huge community!
-1. Async out-of-the-box, which is great for web development
+1. Async out-of-the-box, which is great for web development - why?
 1. Great for JSON APIs, I/O (not so great for CPU-intensive apps)
 
 ## Basic Examples
