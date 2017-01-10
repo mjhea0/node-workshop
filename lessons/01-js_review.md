@@ -71,6 +71,56 @@ typeof function test(){};   // => 'function'
 
 Variables are containers for values, allowing you to pass them around and refer to them with a set name.
 
+### `var`
+
+```javascript
+var tweet = {
+  alias: 'realpython'
+  body: 'Use Django or end up building a Django.',
+  likes: 8,
+  retweets: 2
+}
+```
+
+es6 introduced `let` and `const`, which can be used in place of `var` when appropriate...
+
+### `let`
+
+`let` declares a block-level variable:
+
+```javascript
+function foo() {
+  for(let i = 0; i < 10; i++){
+    console.log(i)  // i is available
+  }
+  console.log(i)    // i is not available
+}
+```
+
+> **NOTE:** If you declare a variable with `let` outside of a block, it will have global scope. We'll talk more about block scoping shortly.
+
+### `const`
+
+In es6, a `const` (constant) is a single assignment variable. In other words, you cannot reassign it to something else once you assign a value to it:
+
+```javascript
+const name = "Michael";
+name = 'Jeremy'     // what happens here?
+```
+
+Keep in mind that you add and update properties:
+
+```javascript
+const myFavoriteObject = {
+  someProperty: 'foo'
+};
+
+myFavoriteObject = 'bar';                 // Will this work?
+myFavoriteObject.someProperty = 'bar';    // What about this?
+```
+
+`const` is also bound to a block.
+
 ## Functions
 
 Functions are used to capture and reuse blocks of code. They should have a singled defined purpose.
