@@ -42,6 +42,8 @@ Happy to meet at least once before the first workshop starts to help you through
 - Topics: JavaScript Review, Higher-Order Functions, Callbacks, es6
 - Duration: 3 to 4 hours
 
+Outline:
+
 1. [JavaScript Review](lessons/01-js_review.md)
 1. [Higher-Order Functions](lessons/02-hof.md)
 1. [Callbacks](lessons/03-callbacks.md)
