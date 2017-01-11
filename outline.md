@@ -47,7 +47,10 @@ Outline:
 1. [JavaScript Review](lessons/01-js_review.md)
 1. [Higher-Order Functions](lessons/02-hof.md)
 1. [Callbacks](lessons/03-callbacks.md)
-1. Homework - TBD
+1. Homework
+  - Review the above lessons, paying close attention to the *Your turn!* parts.
+  - Finish working through learnyounode
+  - Work through as many of the [challenges](challenges) as you can
 
 ## Day 2
 
