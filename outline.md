@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.4
+v0.0.5
 
 ### End goal
 
@@ -65,6 +65,7 @@ Outline:
 1. CRUD Project - movie mania
   1. Set up a new project
   1. Create a new RESTful resource with the following routes:
+
     | Route      | HTTP Verb | Action             |
     |------------|-----------|--------------------|
     | movies     | GET       | Get all movies     |
@@ -72,6 +73,7 @@ Outline:
     | movies     | POST      | Create a movie     |
     | movies/:id | PUT       | Update a movie     |
     | movies/:id | DELETE    | Delete a movie     |
+    
   1. Write a function to call the [OMDB API](http://www.omdbapi.com/) using the [request](https://github.com/request/request) library, which returns an array of movies. Use this data for your API.
 1. Homework
   - Create a new API with the resources of your choice - i.e., cars, animals, cookies, bikes, bananas, coffees...
