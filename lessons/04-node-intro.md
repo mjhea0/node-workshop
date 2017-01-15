@@ -183,7 +183,7 @@ fs.writeFile(file, 'Hi!', function(err) {
 
 ## Exercise One
 
-Read in *lessons/data/01_data.json* and iterate through the array:
+Read *lessons/data/01_data.json* and iterate through the array:
 
 1. Create a CSV file, where the header is made up of the keys from each object.
 1. Only add data to the CSV file if the last name starts with the letters A through M

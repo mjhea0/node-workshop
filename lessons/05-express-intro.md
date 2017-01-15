@@ -18,7 +18,7 @@ This [file](https://docs.npmjs.com/files/package.json) contains metadata about o
 
 Let's install our first dependency - Express:
 
-```
+```sh
 $ npm install express --save
 ```
 
@@ -68,7 +68,7 @@ app.get('/', function(req, res) {
 
 This, in turn, sends an HTML *response* (`Hello World`) to the client. So, a [route](https://expressjs.com/en/starter/basic-routing.html) simply manages the request/response cycle when a client hits a certain endpoint.
 
-ADD DIAGRAM  
+ADD IMAGE OF LIVE DIAGRAM
 
 Your Turn!
 
@@ -218,3 +218,50 @@ Let's build a basic calculator together...
   ```
 
 1. Refactor your code to use only one route rather than four separate routes.
+
+## Middleware
+
+Middleware is a collection of process that run on each request to the server.
+[Express Middleware](http://expressjs.com/en/guide/using-middleware.html) utilizes callbacks to handle requests:
+
+```javascript
+// a "GET" request to "/" will run the function below
+app.get('/', function(req, res) {
+  // send back the response: 'Hello World'
+  res.send('Hello World');
+});
+```
+
+Middleware runs in a specific order. This is important! Why?
+
+For example, you may want to limit access to a specific route so that only those logged in can view it. And, perhaps you have two middleware functions:
+
+1. The first ensures the user is logged in
+1. The second loads the route
+
+Well, which of these must be called first?
+
+For the most part, Express uses app-level middleware and route-level middleware. If you mount a function to app-level middleware then every single incoming request will hit that function. On the other hand, route-level middleware is specific to the route.
+
+ADD DIAGRAM
+
+Example of app-level middleware:
+
+```javascript
+app.use(function (req, res, next) {
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log('Client IP is:', ip);
+  next();
+});
+```
+
+Here, we log the IP address to the console and then call `next()`, which passes the request to the next middleware function.
+
+1. What is the next middleware function?
+1. What happens if there is not another middleware function?
+
+> **NOTE:** Middleware functions must either pass the request to the next middleware function via `next()` or send a response back to the client.
+
+Your turn!
+
+Add an app-level middleware function that validates that the URL parameters used in the calculator app are integers. Also, make sure that there are always two of them. If validation fails, send an appropriate response back to the client. Otherwise pass the request to the next middleware.
