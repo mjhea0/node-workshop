@@ -8,7 +8,7 @@ We could continue to use Node to create and run an HTTP server, but we do not wa
 
 Let's start with a simple app. Create a new directory called "express-intro", and then set up a *package.json* file:
 
-```
+```sh
 $ npm init -y
 ```
 

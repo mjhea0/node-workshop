@@ -54,27 +54,17 @@ Outline:
 
 ## Day 2
 
+1. Review
+  - Homework
+  - What did we cover last time?
+  - template strings
+  - `for...of` vs `for...in`
 1. [Intro to Node](lessons/04-node-intro.md)
 1. [Intro to Express](lessons/05-express-intro.md)
-
-### RESTful APIs
-
-1. HTTP and RESTful APIs
-1. CRUD Project
-
-### Todo
-
-1. template strings
-1. for...of vs for...in
-1. callback hell and promises
-
-### Project: Movie Mania
-
-1. TBD
-
-### Homework
-
-1. TBD
+1. [RESTful APIs with Express](lessons/06-express-rest.md)
+1. CRUD Project - movie mania - tbd
+1. Homework
+  - TBD
 
 ## Day 3
 
