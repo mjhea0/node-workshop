@@ -73,7 +73,7 @@ Outline:
     | movies     | POST      | Create a movie     |
     | movies/:id | PUT       | Update a movie     |
     | movies/:id | DELETE    | Delete a movie     |
-    
+
   1. Write a function to call the [OMDB API](http://www.omdbapi.com/) using the [request](https://github.com/request/request) library, which returns an array of movies. Use this data for your API.
 1. Homework
   - Create a new API with the resources of your choice - i.e., cars, animals, cookies, bikes, bananas, coffees...
@@ -88,17 +88,17 @@ Outline:
 
 ### Full Stack
 
-1. Client vs. Server
+1. Client vs. Server, MVC Structure
 1. Server-side Templating
 1. Full-stack App
 
 ### Project
 
-1. TBD
+1. https://www.nutritionix.com/business/api
 
 ### Homework
 
-1. TBD
+1. http://developer.nytimes.com/
 
 ## Day 3
 
