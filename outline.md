@@ -62,8 +62,19 @@ Outline:
 1. [Intro to Node](lessons/04-node-intro.md)
 1. [Intro to Express](lessons/05-express-intro.md)
 1. [RESTful APIs with Express](lessons/06-express-rest.md)
-1. CRUD Project - movie mania - tbd
+1. CRUD Project - movie mania
+  1. Set up a new project
+  1. Create a new RESTful resource with the following routes:
+    | Route      | HTTP Verb | Action             |
+    |------------|-----------|--------------------|
+    | movies     | GET       | Get all movies     |
+    | movies/:id | GET       | Get a single movie |
+    | movies     | POST      | Create a movie     |
+    | movies/:id | PUT       | Update a movie     |
+    | movies/:id | DELETE    | Delete a movie     |
+  1. Write a function to call the [OMDB API](http://www.omdbapi.com/) using the [request](https://github.com/request/request) library, which returns an array of movies. Use this data for your API.
 1. Homework
+  - Create a new API with the resources of your choice - i.e., cars, animals, cookies, bikes, bananas, coffees...
   - TBD
 
 ## Day 3
@@ -94,11 +105,6 @@ Outline:
 1. Project Setup
 1. DB Setup
 1. Deploy!
-
-### Express Boilerplate
-
-1. What is it?
-1. How to use it
 
 ### Auth w/Passport
 

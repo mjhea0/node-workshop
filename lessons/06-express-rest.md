@@ -42,3 +42,15 @@ Run `npm start` to test. Kill the server. Open up the project in your code edito
 ## Puppy API
 
 Let's create an API together!
+
+### Route Setup
+
+TBD
+
+### App Middleware
+
+TBD
+
+### Test
+
+cURL/HTTPie
