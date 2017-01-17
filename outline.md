@@ -34,6 +34,8 @@ Outline:
 - Topics: Node, Express, RESTful APIs, CRUD
 - Duration: ?
 
+Outline:
+
 1. Stand-up:
   - How did the homework go?
   - What did we cover last time?
