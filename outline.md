@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.6
+v0.0.7
 
 ### End Goal
 
@@ -17,7 +17,7 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 ## Day 1
 
 - Topics: JavaScript Review, Higher-Order Functions, Callbacks, es6
-- Duration: 3 to 4 hours
+- Duration: 3 to 4 hours (not counting HW)
 
 Outline:
 
@@ -30,6 +30,9 @@ Outline:
   - Work through as many of the [challenges](challenges) as you can
 
 ## Day 2
+
+- Topics: Node, Express, RESTful APIs, CRUD
+- Duration: ?
 
 1. Stand-up:
   - How did the homework go?
