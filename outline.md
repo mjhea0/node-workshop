@@ -57,7 +57,8 @@ Outline:
   1. Write a function to call the [OMDB API](http://www.omdbapi.com/) using the [request](https://github.com/request/request) library, which returns an array of movies. Use this data for your API.
 1. Homework
   - Create a new API with the resources of your choice - i.e., cars, animals, cookies, bikes, bananas, coffees...
-  - TBD
+  - Instal linter
+  - Fix Jim
 
 ## Day 3
 

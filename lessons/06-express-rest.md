@@ -45,7 +45,10 @@ Let's create an API together!
 
 ### Route Setup
 
-TBD
+Create a new set of routes:
+
+1. Update app.js
+1. Duplicate a route
 
 ### App Middleware
 
