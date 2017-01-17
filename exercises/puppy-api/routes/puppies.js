@@ -50,14 +50,6 @@ router.get('/:id', function(req, res, next) {
   // get id
   var id = parseInt(req.params.id);
   // iterate through puppy array
-  // for (var i = 0; i < puppies.length; i++) {
-  //   if(puppies[i].id === id) {
-  //     return res.json({
-  //       status: 'success',
-  //       results: puppies[i]
-  //     });
-  //   }
-  // }
   var singlePuppy = puppies.filter(function(puppy) {
     return puppy.id === id;
   });

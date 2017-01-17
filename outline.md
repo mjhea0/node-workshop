@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.7
+v0.0.8
 
 ### End Goal
 
@@ -32,7 +32,7 @@ Outline:
 ## Day 2
 
 - Topics: Node, Express, RESTful APIs, CRUD
-- Duration: ?
+- Duration: 6 to 7 hours (not counting HW)
 
 Outline:
 
@@ -42,6 +42,14 @@ Outline:
 1. [Intro to Node](lessons/04-node-intro.md)
 1. [Intro to Express](lessons/05-express-intro.md)
 1. [RESTful APIs with Express](lessons/06-express-rest.md)
+1. Homework
+  - Review the above lessons, paying close attention to the *Your turn!* parts.
+  - Read through either [Atom for Web Developers](http://mherman.org/blog/2016/08/16/atom-for-web-developers) or [Sublime Text for Web Developers](http://mherman.org/blog/2015/02/05/sublime-text-for-web-developers). Make sure to install the linters!
+  - Finish the [challenges](challenges).
+  - If you have time, create a new API, using the Express Generator, with the resources of your choice - i.e., cars, animals, cookies, bikes, bananas, coffees...
+
+## Day 3
+
 1. CRUD Project - movie mania
   1. Set up a new project
   1. Create a new RESTful resource with the following routes:
@@ -55,12 +63,6 @@ Outline:
     | movies/:id | DELETE    | Delete a movie     |
 
   1. Write a function to call the [OMDB API](http://www.omdbapi.com/) using the [request](https://github.com/request/request) library, which returns an array of movies. Use this data for your API.
-1. Homework
-  - Create a new API with the resources of your choice - i.e., cars, animals, cookies, bikes, bananas, coffees...
-  - Instal linter
-  - Fix Jim
-
-## Day 3
 
 ### MongoDB
 
