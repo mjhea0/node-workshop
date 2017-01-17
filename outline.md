@@ -12,7 +12,7 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 
 ## Day 0
 
-1. [Pre-work](lessons/00-preworkd.md) (please complete before the first session)
+1. [Pre-work](lessons/00-prework.md) (please complete before the first session)
 
 ## Day 1
 
