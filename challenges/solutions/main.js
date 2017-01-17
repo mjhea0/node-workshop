@@ -72,3 +72,18 @@ function repeater(str, int) {
 }
 
 console.log(repeater('blah', 3) === 'blahblahblah');
+
+
+/*
+
+Write a function called `reverseWord() that takes a string as an argument and returns the reverse of that string.
+  - Input: `'hello'`
+  - Output: `'olleh'`
+
+ */
+
+function reverseWord(str) {
+  return str.split('').reverse().join('');
+}
+
+console.log(reverseWord('hello') === 'olleh');
