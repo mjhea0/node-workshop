@@ -51,7 +51,7 @@ console.log('Hello from Node');
 
 Run this like so:
 
-```
+```sh
 $ node hello.js
 Hello from Node
 ```
