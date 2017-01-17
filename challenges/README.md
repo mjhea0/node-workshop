@@ -5,7 +5,7 @@
 1. Create a new project called "javascript-challenges" and add a *main.js* file to it.
 1. Solve each of the challenges below, adding your code to *main.js*.
 1. Commit and push your code to GitHub after you complete each challenge.
-1. Add a comment above each function declaration, explain in a line or two what the function does.
+1. Add a comment above each function declaration, explaining in a line or two what the function does as well as the expected inputs and outputs. It's best to add these comments before you start writing any code!
 1. Experiment with higher order functions - like `forEach()`, `map()`, and `filer()` - in place of vanilla `for` loops.
 1. BONUS: Try refactoring the function to use a callback function after you get it working. Think about how you could handler errors. See the example for more information.
 
@@ -64,7 +64,7 @@ getFirstChar('test', function(err, res) {
 1. Write a function called `findChar()` that takes a string and an integer as arguments, and returns the character at the position represented by the number. (Remember: indexing starts a 0)
   - Input: `'twister', 2`
   - Output: `'i'`
-1. Write a function called `calculate()` that takes two integers and a string as arguments. If the string is `add`, then return the sum of the integers. If the string is `subtract`, return the difference. If the string is `mult`, return the product. If the string is `div`, return the ratio. Otherwise return 0.
+1. Write a function called `calculate()` that takes two integers and a string as arguments. If the string is `add`, then return the sum of the integers. If the string is `sub`, return the difference. If the string is `mult`, return the product. If the string is `div`, return the ratio. Otherwise return 0.
   - Input: `1, 10, 'add'`
   - Output: `11`
 1. Write a function called `repeater()` that takes a string and an integer as arguments, and returns the string repeated that many number of times.
