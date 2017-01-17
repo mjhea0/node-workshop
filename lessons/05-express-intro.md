@@ -261,7 +261,3 @@ Here, we log the IP address to the console and then call `next()`, which passes 
 1. What happens if there is not another middleware function?
 
 > **NOTE:** Middleware functions must either pass the request to the next middleware function via `next()` or send a response back to the client.
-
-Your turn!
-
-Add an app-level middleware function that validates that the URL parameters used in the calculator app are integers. Also, make sure that there are always two of them. If validation fails, send an appropriate response back to the client. Otherwise pass the request to the next middleware.
