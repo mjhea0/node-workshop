@@ -1,41 +1,18 @@
 # Outline
 
-v0.0.5
+v0.0.6
 
-### End goal
+### End Goal
 
-Build a full-stack application with Node and Express where the user can authenticate via Twitter and then data from the Twitter API is displayed to the user.
+Build a full-stack application with Node and Express where the user can authenticate via Twitter. Once authenticated, the user is then displayed some nice charts and graphs populated with data from the Twitter API.
 
 ### Example Code
 
 Make sure to create a new directory on your machine called "node-workshop" to house all of your projects for these workshops. Each individual assignment should be placed within that directory. Make sure to add a git repo to each directory.
 
-## Pre Work
+## Day 0
 
-### Dependencies
-
-Make sure you have Node version 6 or greater and NPM version 3 or greater::
-
-```sh
-$ node -v
-v7.2.1
-
-$ npm -v
-3.10.9
-```
-
-If you need to update, you can download both Node and NPM [here](https://nodejs.org/en/download/current/).
-
-### NodeSchool
-
-Work through the following [NodeSchool](https://nodeschool.io/) workshops:
-
-1. [javascripting](https://github.com/workshopper/javascripting)
-1. [learnyounode](https://github.com/workshopper/learnyounode)
-
-Make sure you complete javascripting and at least the first five learnyounode exercises. Create a new repository for each and push your code to GitHub. Try your best to work on this together. Send me the link once complete. Also, if you get stuck, please mark down what you're having problems with.
-
-Happy to meet at least once before the first workshop starts to help you through the pre-work.
+1. [Pre-work](lessons/00-preworkd.md) (please complete before the first session)
 
 ## Day 1
 
@@ -54,11 +31,9 @@ Outline:
 
 ## Day 2
 
-1. Review
-  - Homework
+1. Stand-up:
+  - How did the homework go?
   - What did we cover last time?
-  - template strings
-  - `for...of` vs `for...in`
 1. [Intro to Node](lessons/04-node-intro.md)
 1. [Intro to Express](lessons/05-express-intro.md)
 1. [RESTful APIs with Express](lessons/06-express-rest.md)

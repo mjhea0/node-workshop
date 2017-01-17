@@ -268,7 +268,7 @@ for (var i = 1; i < 5; i++) {
 
 ### `while`
 
-`while` loops continue to run as long as the boolean expression evaluates to `true`
+`while` loops continue to run as long as the boolean expression evaluates to `true`.
 
 ```javascript
 var i = 1;
@@ -277,6 +277,41 @@ while (i <= 5) {
   i++;
 }
 ```
+
+### `for...of`
+
+`for...of` loops can be used to iterate through an array or a string.
+
+```javascript
+var arr = [2, 6, 9, 1]
+for (var num of arr) {
+  console.log(num);
+}
+
+var str = '2691'
+for (var char of str) {
+  console.log(char);
+}
+```
+
+### `for...in`
+
+`for...of` loops can be used to iterate through the properties of an object.
+
+```javascript
+var obj = {  
+  1: 'a',
+  2: 'b',
+  3: 'c',
+  4: 'd'
+}
+
+for (var key in obj) {  
+  console.log(obj[key])
+}
+```
+
+> **NOTE:** Why did we use bracket notation (`obj[key]`)? Could we use dot notation (`obj.key`)? Why or why not?
 
 ## Arrays
 
@@ -450,3 +485,31 @@ for (let j = 0, j < 10; j++) {
 }
 console.log(j)    // what will this result in?
 ```
+
+## Template Strings
+
+With es6, we also go template strings, which are multi-line string literals that support interpolation.
+
+1. They use back ticks rather than quotes:
+
+  ```javascript
+  console.log(`Hi!`);
+  ```
+
+1. They allow string interpolation:
+
+  ```javascript
+  var name = 'Michael';
+  console.log(`Hi, ${name}!`);
+
+  var num1 = 1;
+  var num2 = 2;
+  console.log(`The sum is - ${num1+num2}`);
+
+  var num3 = 20;
+  var num4 = 7;
+  function sum(n1, n2) {
+    return n1 + n2
+  }
+  console.log(`The sum is - ${sum(num3, num4)}`);
+  ```
