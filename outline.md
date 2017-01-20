@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.8
+v0.0.9
 
 ### End Goal
 
@@ -50,40 +50,28 @@ Outline:
 
 ## Day 3
 
-1. CRUD Project - movie mania
-  1. Set up a new project
-  1. Create a new RESTful resource with the following routes:
+- Topics: Node, Express, RESTful APIs, CRUD
+- Duration: ?
 
-    | Route      | HTTP Verb | Action             |
-    |------------|-----------|--------------------|
-    | movies     | GET       | Get all movies     |
-    | movies/:id | GET       | Get a single movie |
-    | movies     | POST      | Create a movie     |
-    | movies/:id | PUT       | Update a movie     |
-    | movies/:id | DELETE    | Delete a movie     |
+Outline:
 
-  1. Write a function to call the [OMDB API](http://www.omdbapi.com/) using the [request](https://github.com/request/request) library, which returns an array of movies. Use this data for your API.
+1. Stand-up:
+  - How did the homework go?
+  - What did we cover last time?
+1. [Review](lessons/07-review.md)
+1. [CRUD Project - Movie Mania!](lessons/08-movie-mania.md)
+1. [Full-Stack App](lessons/09-fullstack-app.md)
+1. Homework:
+  - TBD
+  - https://www.nutritionix.com/business/api ?
+  - http://developer.nytimes.com/ ?
+
+## Day 4
 
 ### MongoDB
 
 1. SQL vs NoSQL
 1. Mongo and Mongoose Setup
-
-### Full Stack
-
-1. Client vs. Server, MVC Structure
-1. Server-side Templating
-1. Full-stack App
-
-### Project
-
-1. https://www.nutritionix.com/business/api
-
-### Homework
-
-1. http://developer.nytimes.com/
-
-## Day 3
 
 ### Deployment
 

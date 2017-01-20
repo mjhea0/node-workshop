@@ -87,3 +87,92 @@ function reverseWord(str) {
 }
 
 console.log(reverseWord('hello') === 'olleh');
+
+/*
+
+Write a function called `factorial()` that takes an integer as an argument and returns the factorial of a number.
+  - Input: `5`
+  - Output: `120`
+
+ */
+
+function factorial(num) {
+  var result = 1;
+  var multiplier = num;
+  for (var i = 1; i < num; i++) {
+    result = result * multiplier;
+    multiplier = multiplier - 1;
+  }
+  return result;
+}
+
+console.log(factorial(5) === 120);
+console.log(factorial(6) === 720);
+
+/*
+
+Write a function called `longestString()` that takes a phrase as a string, and returns the longest word in that phrase. If the phrase contains more than one such word, return the first occurrence.
+  - Input: `'My father likes the color red.'`
+  - Output: `'father'`
+
+ */
+
+function longestString(phrase) {
+  var phraseArray = phrase.split(' ');
+  var longest = phraseArray[0];
+  for (var i = 1; i < phraseArray.length; i++) {
+    if (phraseArray[i].length > longest.length) {
+      longest = phraseArray[i];
+    }
+  }
+  return longest;
+}
+
+console.log(longestString('one four ten') === 'four');
+console.log(longestString('My father likes the color red.') === 'father');
+console.log(longestString('one ten') === 'one');
+
+/*
+
+Write a function called `getTruthy()` that takes an array, and returns a filtered array. The filtered array should only contain the `truthy` values from the initial array.
+  - Input: `['hi', null, false, 10, 0]`
+  - Output: `['hi', 10]`
+
+ */
+
+function getTruthy(arr) {
+  return arr.filter(function(el) {
+    return el;
+  });
+}
+
+console.log(getTruthy(['']).length === 0);
+console.log(getTruthy(['hi', null, false, 10, 0]).length === 2);
+console.log(getTruthy(['hi', null, false, 10, 0])[0] === 'hi');
+console.log(getTruthy(['hi', null, false, 10, 0])[1] === 10);
+
+/*
+
+Write a function called `getUnique()` that takes two arrays as arguments, and returns an array of all elements that are only in one array.
+  - Input: `[1, 2, 3], [1, 2, 4, 5]`
+  - Output: `[3, 4, 5]`
+
+ */
+
+function getUnique(arr1, arr2) {
+  arr2.forEach(function(el) {
+    if (arr1.indexOf(el) === -1) {
+      arr1.push(el);
+    } else {
+      arr1.splice(arr1.indexOf(el), 1);
+    }
+  });
+  return arr1;
+}
+
+console.log(getUnique([1, 2, 3], [1, 2, 4, 5]).length === 3);
+console.log(getUnique([1, 2, 3], [1, 2, 4, 5])[0] === 3);
+console.log(getUnique([1, 2, 3], [1, 2, 4, 5])[1] === 4);
+console.log(getUnique([1, 2, 3], [1, 2, 4, 5])[2] === 5);
+console.log(getUnique([1, 2, 3], [1, 2, 4, 3]).length === 1);
+console.log(getUnique([1, 2, 3], [1, 2, 4, 3])[0] === 4);
