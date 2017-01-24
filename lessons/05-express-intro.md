@@ -68,8 +68,6 @@ app.get('/', function(req, res) {
 
 This, in turn, sends an HTML *response* (`Hello World`) to the client. So, a [route](https://expressjs.com/en/starter/basic-routing.html) simply manages the request/response cycle when a client hits a certain endpoint.
 
-ADD IMAGE OF LIVE DIAGRAM
-
 Your Turn!
 
 1. What's happening here? Describe it to yourself out-loud or to a friend.
@@ -242,8 +240,6 @@ For example, you may want to limit access to a specific route so that only those
 Well, which of these must be called first?
 
 For the most part, Express uses app-level middleware and route-level middleware. If you mount a function to app-level middleware then every single incoming request will hit that function. On the other hand, route-level middleware is specific to the route.
-
-ADD DIAGRAM
 
 Example of app-level middleware:
 
