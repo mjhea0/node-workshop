@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.9
+v0.0.10
 
 ### End Goal
 
@@ -62,11 +62,15 @@ Outline:
 1. [CRUD Project - Movie Mania!](lessons/08-movie-mania.md)
 1. [Full-Stack App](lessons/09-fullstack-app.md)
 1. Homework:
-  - TBD
-  - https://www.nutritionix.com/business/api ?
-  - http://developer.nytimes.com/ ?
+  - Finish the [challenges](challenges).
+  - Review the above lessons
 
 ## Day 4
+
+Mongo, Client-side (bootstrap)
+
+Chart (count and date) or Deployment
+
 
 ### MongoDB
 
@@ -78,11 +82,3 @@ Outline:
 1. Project Setup
 1. DB Setup
 1. Deploy!
-
-### Auth w/Passport
-
-1. TBD
-
-### Full-stack Project
-
-1. TBD

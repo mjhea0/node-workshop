@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1>Tweets</h1>
+    <form class="form" action="/gnip/search" method="POST">
+      <input type="text" name="keyword" placeholder="enter a keyword">
+      <input type="submit" value="SUBMIT">
+    </form>
+    <p>SEARCH TERM: <%= searchTerm %></p>
+    <br>
+    <% if(tweets.length) {%>
+      <ul>
+      <% for(var i=0; i < tweets.length; i++) {%>
+         <li>
+           <p>ID: <%= tweets[i].id %></p>
+           <p>BODY: <%= tweets[i].body %></p>
+         </li>
+      </ul>
+      <%}%>
+    <%}%>
+    <% if(!tweets.length) {%>
+      <p>No tweets!</p>
+    <%}%>
+  </body>
+</html>
