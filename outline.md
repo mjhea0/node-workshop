@@ -72,6 +72,8 @@ Outline:
 - Topics: Bootstrap, MongoDB, Data Visualization, Deployment
 - Duration: TBD
 
+Outline:
+
 1. Stand-up:
   - How did the homework go?
   - What did we cover last time?
