@@ -17,7 +17,7 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 ## Day 1
 
 - Topics: JavaScript Review, Higher-Order Functions, Callbacks, es6
-- Duration: 3 to 4 hours (not counting HW)
+- Duration: 3 to 4 hours (not including homework)
 
 Outline:
 
