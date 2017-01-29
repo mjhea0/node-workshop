@@ -1,10 +1,10 @@
 # Outline
 
-v0.0.10
+v0.0.11
 
 ### End Goal
 
-Build a full-stack application with Node and Express where the user can authenticate via Twitter. Once authenticated, the user is then displayed some nice charts and graphs populated with data from the Twitter API.
+Build a full-stack application with Node and Express where the user can authenticate via [Gnip](https://gnip.com/). Once authenticated, the user is then displayed some nice charts and graphs populated with data from the Gnip API.
 
 ### Example Code
 
@@ -32,7 +32,7 @@ Outline:
 ## Day 2
 
 - Topics: Node, Express, RESTful APIs, CRUD
-- Duration: 6 to 7 hours (not counting HW)
+- Duration: 6 to 7 hours (not including homework)
 
 Outline:
 
@@ -50,8 +50,10 @@ Outline:
 
 ## Day 3
 
-- Topics: Node, Express, RESTful APIs, CRUD
-- Duration: ?
+- Topics:
+  - Review: Node, Express, RESTful APIs
+  - New: CRUD, Client-side
+- Duration: 7 to 8 hours (not including homework)
 
 Outline:
 
@@ -63,22 +65,20 @@ Outline:
 1. [Full-Stack App](lessons/09-fullstack-app.md)
 1. Homework:
   - Finish the [challenges](challenges).
-  - Review the above lessons
+  - Review the above lessons.
 
 ## Day 4
 
-Mongo, Client-side (bootstrap)
+- Topics: Bootstrap, MongoDB, Data Visualization, Deployment
+- Duration: TBD
 
-Chart (count and date) or Deployment
-
-
-### MongoDB
-
-1. SQL vs NoSQL
-1. Mongo and Mongoose Setup
-
-### Deployment
-
-1. Project Setup
-1. DB Setup
-1. Deploy!
+1. Stand-up:
+  - How did the homework go?
+  - What did we cover last time?
+1. [Bootstrap](lessons/10-bootstrap.md)
+1. [MongoDB](lessons/11-mongo.md)
+1. [Visualization](lessons/12-visualization.md)
+1. [Deployment](lessons/13-deployment.md)
+1. Homework:
+  - Review the above lessons.
+  - Email me if you have questions. Cheers!
