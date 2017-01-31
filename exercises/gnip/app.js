@@ -7,19 +7,20 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var gnip = require('./routes/gnip');
+var api = require('./routes/api');
+// var gnip = require('./routes/gnip');
 
-var model = require('./model');
+// var model = require('./model');
 
 // get json file
-var file = model.getter();
-// if empty?
-if (!file.length) {
-  // yes => seed with gnip api
-  model.setter(function(error, success) {
-    console.log('yay!');
-  });
-}
+// var file = model.getter();
+// // if empty?
+// if (!file.length) {
+//   // yes => seed with gnip api
+//   model.setter(function(error, success) {
+//     console.log('yay!');
+//   });
+// }
 // no => do nothing
 
 var app = express();
@@ -38,7 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/gnip', gnip);
+app.use('/api', api);
+// app.use('/gnip', gnip);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

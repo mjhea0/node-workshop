@@ -2,10 +2,25 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <div class="text-center">
+            <h1><%= title %></h1>
+          </div>
+          <hr><br>
+          <form action="/api" method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" name="search" placeholder="Enter a search term.." required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

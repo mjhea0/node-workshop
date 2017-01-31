@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var tweets = require('../tweets.json');
+// var tweets = require('../tweets.json');
 var model = require('../model.js');
 
 router.get('/', function(req, res, next) {

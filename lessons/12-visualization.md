@@ -39,12 +39,6 @@ Then add the following script tag:
 <script>
 var ctx = document.getElementById("chart");
 
-var myBarChart = new Chart(ctx, {
-  type: 'bar',
-  data: data,
-  options: options
-});
-
 var data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
@@ -71,6 +65,12 @@ var data = {
     }
   ]
 };
+
+var myBarChart = new Chart(ctx, {
+  type: 'bar',
+  data: data,
+  options: options
+});
 
 var options = {};
 </script>

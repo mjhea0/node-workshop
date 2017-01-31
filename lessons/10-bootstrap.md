@@ -2,7 +2,7 @@
 
 Bootstrap is a front-end CSS framework that provides a set of pre-written CSS rules used to apply styles to HTML elements. It's particularly useful for making sites responsive based on the screen size.
 
-> **NOTE:** Review [Getting Started With Bootstrap 3])(https://realpython.com/blog/python/getting-started-with-bootstrap-3/) to quickly get up and running with Bootstrap.
+> **NOTE:** Review [Getting Started With Bootstrap 3](https://realpython.com/blog/python/getting-started-with-bootstrap-3/) to quickly get up and running with Bootstrap.
 
 ## Quick Start
 

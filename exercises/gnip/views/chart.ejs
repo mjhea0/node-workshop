@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <div>
+            <h1><%= title %></h1>
+          </div>
+          <hr><br>
+          <canvas id="chart" width="400" height="400"></canvas>
+          <br>
+          <p><a href="/">Search Again</a></p>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript">
+      var data = <%- JSON.stringify(data) %>;
+    </script>
+    <script type="text/javascript" src="javascripts/main.js"></script>
+  </body>
+</html>
