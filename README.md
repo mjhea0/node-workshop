@@ -1,6 +1,6 @@
 # Node Workshop
 
-Material for a 4-day workshop. WIP
+Material for a 4-day workshop.
 
 ## Requirements
 

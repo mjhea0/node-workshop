@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.11
+v1.0.0
 
 ### End Goal
 
@@ -69,8 +69,8 @@ Outline:
 
 ## Day 4
 
-- Topics: Bootstrap, MongoDB, Data Visualization, Deployment
-- Duration: TBD
+- Topics: Bootstrap, MongoDB, Data Visualization, Deployment, jQuery
+- Duration: 7 to 8 hours (not including homework)
 
 Outline:
 
@@ -78,8 +78,8 @@ Outline:
   - How did the homework go?
   - What did we cover last time?
 1. [Bootstrap](lessons/10-bootstrap.md)
-1. [MongoDB](lessons/11-mongo.md)
 1. [Visualization](lessons/12-visualization.md)
+1. [MongoDB](lessons/11-mongo.md)
 1. [Deployment](lessons/13-deployment.md)
 1. Homework:
   - Review the above lessons.

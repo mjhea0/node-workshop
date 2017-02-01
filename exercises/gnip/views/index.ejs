@@ -13,14 +13,24 @@
             <h1><%= title %></h1>
           </div>
           <hr><br>
-          <form action="/api" method="POST">
+          <p id="search-info">You searched for <strong><span id="search-info-span"></span></strong></p>
+          <!-- <form action="/api" method="POST"> -->
+          <form>
             <div class="form-group">
-              <input type="text" class="form-control" name="search" placeholder="Enter a search term.." required>
+              <input type="text" class="form-control" name="search" placeholder="Enter a search term.." id="search-term" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Submit</button>
           </form>
+          <br><br>
+          <canvas id="chart" width="400" height="400"></canvas>
         </div>
       </div>
     </div>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript" src="javascripts/ajax.js"></script>
   </body>
 </html>

@@ -127,7 +127,7 @@ database
 });
 
 // find all students
-users.find({})
+students.find({})
 .then(function(docs) {
   console.log(docs);
 })

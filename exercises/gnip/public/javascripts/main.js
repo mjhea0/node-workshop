@@ -2,7 +2,7 @@ console.log(data);
 var ctx = document.getElementById("chart");
 
 var chartLabels = data.map(function(el) {
-  return el.day;
+  return el.number;
 });
 
 var counts = data.map(function(el) {
