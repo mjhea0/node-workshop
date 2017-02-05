@@ -13,8 +13,10 @@ Material for a 4-day workshop:
 | Homework | 2 to 3 hours  |
 | Day 4    | 7 to 8 hours  |
 
-TOTAL HOURS: 37 to 45 hours
-Total In-person hours: 23 to 27 hours
+Total Hours:
+
+- 37 to 45 hours
+- In-person: 23 to 27 hours
 
 ## Requirements
 
