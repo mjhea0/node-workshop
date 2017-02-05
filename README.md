@@ -1,6 +1,20 @@
 # Node Workshop
 
-Material for a 4-day workshop.
+Material for a 4-day workshop:
+
+| Event    | Hours         |
+|----------|---------------|
+| Pre-work | 4 to 5 hours  |
+| Day 1    | 3 to 4 hours  |
+| Homework | 4 to 5 hours  |
+| Day 2    | 6 to 7 hours  |
+| Homework | 4 to 5 hours  |
+| Day 3    | 7 to 8 hours  |
+| Homework | 2 to 3 hours  |
+| Day 4    | 7 to 8 hours  |
+
+TOTAL HOURS: 37 to 45 hours
+Total In-person hours: 23 to 27 hours
 
 ## Requirements
 
