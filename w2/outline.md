@@ -31,8 +31,7 @@ Outline:
 1. Stand-up:
   - How did the pre-work go?
   - Review, work through problems together
-  - w2/lessons/01-fullstack-app.md
-1. [Full-Stack App](w2/lessons/01-fullstack-app.md)
+1. [Full-Stack App](lessons/01-fullstack-app.md)
 1. Homework
   - TBD
 
