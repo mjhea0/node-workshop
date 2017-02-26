@@ -34,6 +34,7 @@ Outline:
 1. [Full-Stack App](lessons/01-fullstack-app.md)
 1. Homework
   - TBD
+  - [Intro to React](https://github.com/mjhea0/react-intro)
 
 ## Day 2
 
