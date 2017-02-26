@@ -12,8 +12,8 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 
 ## Timeline
 
-1. 02/26 - 7:30 to 1:30
-1. 03/05 - free all day
+1. 02/26 - 7:30am to 11:30am
+1. 03/05 - 8:00am to 4:00pm
 1. 03/11 - morning
 1. 03/19 - free all day
 
