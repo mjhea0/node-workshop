@@ -56,7 +56,7 @@ By the end of this session, you should be able to...
 ### Info
 
 - Topics: Node/Express, RESTful APIs, Single Page Applications, jQuery
-- Duration: 5 to 6 hours
+- Duration: 6 to 7 hours
 
 ### Objectives
 
