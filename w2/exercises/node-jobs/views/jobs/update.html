@@ -1,0 +1,35 @@
+{% extends "../_layout.html" %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  <hr><br>
+  <form action="/jobs/{{ job.id }}/update" method="post">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" name="title" id="title" value="{{ job.title }}">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" rows="3" name="description" id="description">{{ job.description }}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="company">Company</label>
+      <input type="text" class="form-control" name="company" id="company" value="{{ job.company }}">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email" value="{{ job.email }}">
+    </div>
+    <div class="form-group">
+      <div class="checkbox">
+        {% if job.contacted === true %}
+          <label><input type="checkbox" name="contacted" checked> Contacted?</label>
+        {% else %}
+          <label><input type="checkbox" name="contacted"> Contacted?</label>
+        {% endif %}
+      </div>
+     </div>
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <a href="/jobs" class="btn btn-success btn-lg">Cancel</a>
+  </form>
+{% endblock %}

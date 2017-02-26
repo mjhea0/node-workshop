@@ -1,0 +1,40 @@
+{% extends "../_layout.html" %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  <hr>
+  <a href="/jobs/new" class="btn btn-primary">Add New Job</a>
+  <br><br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Contacted?</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for job in jobs %}
+        <tr>
+          <td>{{ job.id }}</td>
+          <td>{{ job.title }}</td>
+          <td>{{ job.description }}</td>
+          <td>{{ job.company }}</td>
+          <td>{{ job.email }}</td>
+          {% if job.contacted === true %}
+            <td>Yes</td>
+          {% else %}
+            <td>No</td>
+          {% endif %}
+          <td><a href="/jobs/{{job.id}}/update" class="btn btn-warning btn-sm">Update</a></td>
+          <td><a href="/jobs/{{job.id}}/delete" onclick="return confirm('Are you sure?');" class="btn btn-danger btn-sm">Delete</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
