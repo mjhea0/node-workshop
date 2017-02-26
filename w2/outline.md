@@ -33,7 +33,7 @@ Outline:
   - Review, work through problems together
 1. [Full-Stack App](lessons/01-fullstack-app.md)
 1. Homework
-  - TBD
+  - Refactor callbacks into Promises 
   - [Intro to React](https://github.com/mjhea0/react-intro)
 
 ## Day 2
