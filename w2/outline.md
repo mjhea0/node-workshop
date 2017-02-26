@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.1
+v0.0.2
 
 ### End Goal
 
@@ -63,7 +63,7 @@ By the end of this session, you should be able to...
 By the end of this session, you should be able to...
 
 1. Develop a RESTful API with Node and Express
-1. Describe Single Page Applications (SPAs) and how they differs from the monolithic architecture
+1. Describe Single Page Applications (SPAs) and how they differ from the monolithic architecture
 1. Add jQuery to client-side, build SPA
 
 ### Outline
