@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.4
+v0.0.5
 
 ### End Goal
 
@@ -63,7 +63,7 @@ By the end of this session, you should be able to...
 By the end of this session, you should be able to...
 
 1. Develop a RESTful API with Node and Express
-1. Describe Single Page Applications (SPAs) and how they differ from the monolithic architecture
+1. Describe how the microservice architecture differs from the monolithic architecture
 1. Add jQuery to client-side, build SPA
 
 ### Outline
@@ -71,7 +71,7 @@ By the end of this session, you should be able to...
 1. Stand-up:
   - How did the homework go?
   - What did we cover last time?
-1. Single Page Apps (SPA) Theory
+1. [Microservices vs Monolithic Architecture](https://www.mulesoft.com/resources/api/microservices-vs-monolithic)
 1. SPA Practice
 1. Homework
   - Review Knex + Postgres
