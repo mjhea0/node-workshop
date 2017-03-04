@@ -6,16 +6,16 @@ This workshop reviews JavaScript and then jumps right in to building a full-stac
 
 Material for a 4-day workshop:
 
-| Event    | Hours |
-|----------|-------|
-| Pre-work | ?     |
-| Day 1    | ?     |
-| Homework | ?     |
-| Day 2    | ?     |
-| Homework | ?     |
-| Day 3    | ?     |
-| Homework | ?     |
-| Day 4    | ?     |
+| Event    | Hours         |
+|----------|---------------|
+| Pre-work | 4 to 5 hours  |
+| Day 1    | 3 to 4 hours  |
+| Homework | ?             |
+| Day 2    | ?             |
+| Homework | ?             |
+| Day 3    | ?             |
+| Homework | ?             |
+| Day 4    | ?             |
 
 Total Hours:
 

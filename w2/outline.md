@@ -1,10 +1,10 @@
 # Outline
 
-v0.0.2
+v0.0.3
 
 ### End Goal
 
-Build a full-stack application with Node, Express, Postgres React, and Redux.
+Build a full-stack application with Node, Express, Postgres, React, and Redux.
 
 ### Example Code
 
@@ -45,7 +45,7 @@ By the end of this session, you should be able to...
 1. [Full-Stack App](lessons/01-fullstack-app.md)
 1. Homework
   - Finish [node-jobs](exercises/node-jobs)
-  - Refactor all of the [challenges](challenges/README.md) - refactor logic into a module (*helpers.js*), use promises, resolve promise from separate file (*app.js*), [example](challenges/modular-example)
+  - Refactor all of the [challenges](challenges/README.md) - refactor logic into a module (*helpers.js*), use promises, resolve promise from separate file (*app.js*), [example](challenges/promises-example)
   - Read [A Proper API Crash Course](https://github.com/james-gibson/apiTips)
   - Add a RESTful API to [node-jobs](exercises/node-jobs) - GET ALL jobs, get SINGLE job, add job, update job, delete job
   - Build a full-stack app, with server-side templating, from scratch
