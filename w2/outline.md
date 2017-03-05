@@ -63,7 +63,8 @@ By the end of this session, you should be able to...
 By the end of this session, you should be able to...
 
 1. Develop a RESTful API with Node and Express
-1. Describe how the microservice architecture differs from the monolithic architecture
+1. Describe how the microservice architecture differs from the monolithic architecture along with how single page apps differ from multi page apps
+1. Describe service oriented architecture
 1. Add jQuery to client-side, build SPA
 
 ### Outline
