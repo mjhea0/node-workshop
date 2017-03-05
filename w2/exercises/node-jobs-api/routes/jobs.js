@@ -28,6 +28,7 @@ router.get('/:id', (req, res, next) => {
 add new job
  */
 router.post('/', (req, res, next) => {
+  console.log(req.body);
   model.addJob(req.body);
   res.json({
     status: 'success',
