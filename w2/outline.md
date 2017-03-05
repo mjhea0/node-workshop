@@ -74,20 +74,17 @@ By the end of this session, you should be able to...
 1. [Microservices vs Monolithic Architecture](https://www.mulesoft.com/resources/api/microservices-vs-monolithic)
 1. SPA Practice
 1. Homework
-  - Review Knex + Postgres
+  - Go through [Test Driven Development With Node, Postgres, and Knex (Red/Green/Refactor)](http://mherman.org/blog/2016/04/28/test-driven-development-with-node)
   - Go through [Intro to React](https://github.com/mjhea0/react-intro)
 
-## Day 3
+## Day 3 and 4
 
-Outline:
+Topics:
 
+- Gulp
+- Testing
 - Postgres
 - React
-
-## Day 4
-
-Outline:
-
 - Redux
 - Capstone planning
 - Agile
