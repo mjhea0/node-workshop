@@ -30,8 +30,8 @@ function getAllJobs() {
   return jobs;
 }
 
-function getSingleJob(id) {
-
+function getJob(id) {
+  return jobs.filter((job) => { return job.id === id; });
 }
 
 function addJob(obj) {
@@ -43,16 +43,13 @@ function addJob(obj) {
   return true;
 }
 
-function getJob(id) {
-  return jobs.filter((job) => { return job.id === id; });
-}
-
 function updateJob(id, obj) {
   for (let job of jobs) {
     if(job.id === id) {
       obj.id = id;
-      if (obj.contacted === 'true') obj.contacted = true;
-      else obj.contacted = false;
+      // what if obj.contacted is not '0' or '1'?
+      if (obj.contacted === '0') obj.contacted = false;
+      else obj.contacted = true;
       removeJob(id);
       jobs.push(obj);
     }

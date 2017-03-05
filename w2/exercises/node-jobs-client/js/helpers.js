@@ -5,7 +5,13 @@ function getAllJobs() {
   });
 }
 
-// add job
+function getJob(id) {
+  return $.ajax({
+    method: 'GET',
+    url: `http://localhost:3000/api/v1/jobs/${ id }`,
+  });
+}
+
 function addJob(data) {
   return $.ajax({
     method: 'POST',
@@ -14,12 +20,14 @@ function addJob(data) {
   });
 }
 
-// update job
-function updateJob() {
-  // pass
+function updateJob(id, data) {
+  return $.ajax({
+    method: 'PUT',
+    data: data,
+    url: `http://localhost:3000/api/v1/jobs/${ id }`,
+  });
 }
 
-// delete job
 function deleteJob(id) {
   return $.ajax({
     method: 'DELETE',

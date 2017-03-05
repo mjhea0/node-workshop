@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.5
+v0.0.6
 
 ### End Goal
 
@@ -75,6 +75,7 @@ By the end of this session, you should be able to...
 1. [Microservices vs Monolithic Architecture](https://www.mulesoft.com/resources/api/microservices-vs-monolithic)
 1. SPA Practice - add a [jQuery client-side](exercises/node-jobs-client)
 1. Homework
+  - Finish [node-jobs-client](exercises/node-jobs-client)
   - Go through [Test Driven Development With Node, Postgres, and Knex (Red/Green/Refactor)](http://mherman.org/blog/2016/04/28/test-driven-development-with-node)
   - Go through [Intro to React](https://github.com/mjhea0/react-intro)
   - Add server-side, integration tests to the [node-jobs-api](exercises/node-jobs-api)
