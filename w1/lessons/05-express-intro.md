@@ -129,7 +129,7 @@ Test this out!
 Your Turn!
 
 1. We did forgot to capitalize the first letter of the name. Assign the URL parameter to a variable and then capitalize it correctly before sending back the response.
-1. Add a new route handler to respond with the folling JSON object when a user navigates to `localhost:3000/user/michael/33/javascript`:
+1. Add a new route handler to respond with the following JSON object when a user navigates to `localhost:3000/user/michael/33/javascript`:
 
   ```json
   {
