@@ -14,7 +14,7 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 
 1. 02/26 - 7:30am to 11:30am
 1. 03/05 - 8:00am to 2:30pm
-1. 03/11 - 8:00am to 2:30pm
+1. 03/11 - 7:00am to 2:00pm
 1. 03/19 - 8:00am to 4:00pm
 
 ## Day 0
