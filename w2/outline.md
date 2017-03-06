@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.6
+v0.0.7
 
 ### End Goal
 
@@ -13,9 +13,9 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 ## Timeline
 
 1. 02/26 - 7:30am to 11:30am
-1. 03/05 - 8:00am to 4:00pm
-1. 03/11 - morning
-1. 03/19 - free all day
+1. 03/05 - 8:00am to 2:30pm
+1. 03/11 - 8:00am to 2:30pm
+1. 03/19 - 8:00am to 4:00pm
 
 ## Day 0
 
@@ -79,7 +79,7 @@ By the end of this session, you should be able to...
   - Go through [Test Driven Development With Node, Postgres, and Knex (Red/Green/Refactor)](http://mherman.org/blog/2016/04/28/test-driven-development-with-node)
   - Go through [Intro to React](https://github.com/mjhea0/react-intro)
   - Add server-side, integration tests to the [node-jobs-api](exercises/node-jobs-api)
-  - Review as much of [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) that you can get through
+  - Review as much of [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) that you can get through (up to Redux)
 
 ## Day 3
 
