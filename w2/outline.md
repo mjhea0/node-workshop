@@ -79,7 +79,7 @@ By the end of this session, you should be able to...
   - Go through [Test Driven Development With Node, Postgres, and Knex (Red/Green/Refactor)](http://mherman.org/blog/2016/04/28/test-driven-development-with-node)
   - Go through [Intro to React](https://github.com/mjhea0/react-intro)
   - Add server-side, integration tests to the [node-jobs-api](exercises/node-jobs-api)
-  - Review as much of [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) that you can get through (up to Redux)
+  - [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) that you can get through (day 1 to 17)
 
 ## Day 3
 
@@ -98,17 +98,19 @@ By the end of this session, you should be able to...
 1. Perform the basic CRUD functions on a RESTful resource with knex methods
 1. Describe why you would want to use React
 1. Create a React boilerplate with [Create-React-App](https://github.com/facebookincubator/create-react-app)
+1. Describe the following React components - JSX, components, props, state
 1. Develop a multi-component React app
-1. Use Axious to make AJAX requests in a React component
+1. Make AJAX requests within a React component
 
 ### Outline
 
 1. Stand-up:
   - How did the homework go?
   - What did we cover last time?
-1. Postgres
-1. Knex
-1. React
+1. [Postgres + Knex](w2/lessons/02-pg.md)
+1. [React](w2/lessons/03-react.md)
+1. Homework
+  - [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) that you can get through (day 18 to 30)
 
 ## Day 4
 

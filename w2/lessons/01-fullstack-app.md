@@ -1,4 +1,4 @@
-# Full Stack APP
+# Full Stack App
 
 Code along!
 
@@ -17,6 +17,6 @@ Code along!
     - create a model
     - update a puppy
     - delete a puppy
+  - RESTful API refactor
 1. Client
-  - restful api
   - SPA w/ jQuery
