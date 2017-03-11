@@ -30,7 +30,7 @@ $('body').on('submit', '#add-job-form', function(event) {
 $('body').on('click', '#update-job', function() {
   $('#update-modal').modal('show'); // show modal
   return getJob($(this).data('id'))
-  .then((res) => { buildUpdateModal(res.data[0]); })
+  .then((res) => { buildUpdateModal(res.data); })
   .catch((err) => { console.log(err); })
 });
 

@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.7
+v0.0.8
 
 ### End Goal
 
@@ -16,6 +16,7 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 1. 03/05 - 8:00am to 2:30pm
 1. 03/11 - 7:00am to 2:00pm
 1. 03/19 - 8:00am to 4:00pm
+1. 03/26 - 8:00am to 4:00pm
 
 ## Day 0
 
@@ -79,14 +80,14 @@ By the end of this session, you should be able to...
   - Go through [Test Driven Development With Node, Postgres, and Knex (Red/Green/Refactor)](http://mherman.org/blog/2016/04/28/test-driven-development-with-node)
   - Go through [Intro to React](https://github.com/mjhea0/react-intro)
   - Add server-side, integration tests to the [node-jobs-api](exercises/node-jobs-api)
-  - [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) that you can get through (day 1 to 17)
+  - [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) - day 1 to 17
 
 ## Day 3
 
 ### Info
 
-- Topics: Postgres, Knex, React
-- Duration: 6 to 7 hours
+- Topics: Postgres, Knex
+- Duration: 3 to 4 hours
 
 ### Objectives
 
@@ -96,7 +97,31 @@ By the end of this session, you should be able to...
 1. Write schema migration files with knex to create new database tables
 1. Generate database seed files with knex and apply the seeds to the database
 1. Perform the basic CRUD functions on a RESTful resource with knex methods
-1. Describe why you would want to use React
+1. Set up a testing structure with Mocha and Chai
+1. Write integration tests with Mocha and Chai
+
+### Outline
+
+1. Stand-up:
+  - How did the homework go?
+  - What did we cover last time?
+1. [Postgres + Knex](w2/lessons/02-pg.md)
+1. Tests - add integration tests with mocha and chai
+1. Homework
+  - Finish writing tests
+  - Finish [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) - day 1 to 17
+
+## Day 4
+
+### Info
+
+- Topics: React
+- Duration: 6 to 7 hours
+
+### Objectives
+
+By the end of this session, you should be able to...
+
 1. Create a React boilerplate with [Create-React-App](https://github.com/facebookincubator/create-react-app)
 1. Describe the following React components - JSX, components, props, state
 1. Develop a multi-component React app
@@ -107,17 +132,16 @@ By the end of this session, you should be able to...
 1. Stand-up:
   - How did the homework go?
   - What did we cover last time?
-1. [Postgres + Knex](w2/lessons/02-pg.md)
 1. [React](w2/lessons/03-react.md)
 1. Homework
-  - [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) that you can get through (day 18 to 30)
+  - ??
 
-## Day 4
+
+## Day 5
 
 Topics:
 
 - Gulp
-- Testing
 - Redux
 - Capstone planning
 - Agile

@@ -12,8 +12,8 @@ Material for a 4-day workshop:
 | Day 1    | 3 to 4 hours  |
 | Homework | 7 to 8 hours  |
 | Day 2    | 5 to 6 hours  |
-| Homework | ?             |
-| Day 3    | ?             |
+| Homework | 7 to 8 hours  |
+| Day 3    | 3 to 4 hours  |
 | Homework | ?             |
 | Day 4    | ?             |
 

@@ -1,26 +1,34 @@
 const express = require('express');
 const router = express.Router();
 
-const model = require('../models.js');
+const queries = require('../db/queries.js');
 
 /*
 get all jobs
  */
 router.get('/', (req, res, next) => {
-  res.json({
-    status: 'success',
-    data: model.getAllJobs()
-  });
+  return queries.getAllJobs()
+  .then((jobs) => {
+    res.json({
+      status: 'success',
+      data: jobs
+    });
+  })
+  .catch((err) => { return next(err); });
 });
 
 /*
 get single job
  */
 router.get('/:id', (req, res, next) => {
-  res.json({
-    status: 'success',
-    data: model.getJob(parseInt(req.params.id))
-  });
+  return queries.getSingleJob(parseInt(req.params.id))
+  .then((jobs) => {
+    res.json({
+      status: 'success',
+      data: jobs[0]
+    });
+  })
+  .catch((err) => { return next(err); });
 });
 
 
@@ -28,11 +36,14 @@ router.get('/:id', (req, res, next) => {
 add new job
  */
 router.post('/', (req, res, next) => {
-  model.addJob(req.body);
-  res.json({
-    status: 'success',
-    data: 'Job Added!'
-  });
+  return queries.addJob(req.body)
+  .then((job) => {
+    res.json({
+      status: 'success',
+      data: 'Job Added!'
+    });
+  })
+  .catch((err) => { return next(err); });
 });
 
 
@@ -40,22 +51,28 @@ router.post('/', (req, res, next) => {
 update job
  */
 router.put('/:id', (req, res, next) => {
-  model.updateJob(parseInt(req.params.id), req.body);
-  res.json({
-    status: 'success',
-    data: 'Job Updated!'
-  });
+  return queries.updateJob(parseInt(req.params.id), req.body)
+  .then((job) => {
+    res.json({
+      status: 'success',
+      data: 'Job Updated!'
+    });
+  })
+  .catch((err) => { return next(err); });
 });
 
 /*
 delete job
  */
 router.delete('/:id', (req, res, next) => {
-  model.removeJob(parseInt(req.params.id));
-  res.json({
-    status: 'success',
-    data: 'Job Removed!'
-  });
+  return queries.removeJob(parseInt(req.params.id))
+  .then((jobs) => {
+    res.json({
+      status: 'success',
+      data: 'Job Removed!'
+    });
+  })
+  .catch((err) => { return next(err); });
 });
 
 
