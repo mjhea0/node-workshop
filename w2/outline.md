@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.8
+v0.0.9
 
 ### End Goal
 
@@ -86,7 +86,7 @@ By the end of this session, you should be able to...
 
 ### Info
 
-- Topics: Postgres, Knex
+- Topics: Postgres, Knex, Testing
 - Duration: 3 to 4 hours
 
 ### Objectives
@@ -123,7 +123,7 @@ By the end of this session, you should be able to...
 By the end of this session, you should be able to...
 
 1. Create a React boilerplate with [Create-React-App](https://github.com/facebookincubator/create-react-app)
-1. Describe the following React components - JSX, components, props, state
+1. Describe the following React terms - JSX, components, props, state, virtual dom
 1. Develop a multi-component React app
 1. Make AJAX requests within a React component
 
@@ -132,9 +132,10 @@ By the end of this session, you should be able to...
 1. Stand-up:
   - How did the homework go?
   - What did we cover last time?
+1. Test Review
 1. [React](w2/lessons/03-react.md)
 1. Homework
-  - ??
+  - Finish [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) - day 18 to 30
 
 
 ## Day 5

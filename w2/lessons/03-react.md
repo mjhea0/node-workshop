@@ -6,6 +6,7 @@
 1. JSX
 1. Components - functional vs class-based
 1. Props vs State
+1. Virtual Dom
 
 ## Why React?
 
