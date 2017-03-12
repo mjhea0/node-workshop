@@ -1,6 +1,6 @@
-exports.up = function(knex, Promise) {
-  return knex.schema.createTable('jobs', function(table) {
-    table.increments('id');
+exports.up = (knex) => {
+  return knex.schema.createTable('jobs', (table) => {
+    table.increments();
     table.string('title').notNullable();
     table.string('company').notNullable();
     table.string('description').notNullable();
@@ -10,6 +10,6 @@ exports.up = function(knex, Promise) {
   });
 };
 
-exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('jobs');
+exports.down = (knex) => {
+  return knex.schema.dropTableIfExists('jobs');
 };
