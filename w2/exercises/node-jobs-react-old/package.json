@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.15.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "axios": "^0.15.3",
+    "react-scripts": "0.9.4"
   },
   "scripts": {
     "start": "react-scripts start",
