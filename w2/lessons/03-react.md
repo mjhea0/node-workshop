@@ -145,11 +145,11 @@ What's happening?
 1. `super()` calls constructor of `Component`, which we're extending from
 1. `getJobs()` makes an AJAX call to our server
 1. React is handling the creation of the instance:
-  ```javascript
-  const Test = new App()
-  Test.getJobs()
-  test.render()
-  ```
+    ```javascript
+    const Test = new App()
+    Test.getJobs()
+    test.render()
+    ```
 
 Why is it a class?
 
