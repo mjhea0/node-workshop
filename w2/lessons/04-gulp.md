@@ -2,11 +2,15 @@
 
 Code Along!
 
-1. What is Gulp?
-  - Task?
-  - Run?
-  - Piping?
+## What is Gulp?
+
+1. Gulp?
+1. Gulp Run?
+1. Piping?
+
+## Tasks
+
 1. Lint
-1. Minify
 1. Test
 1. Watch
+1. Minify
