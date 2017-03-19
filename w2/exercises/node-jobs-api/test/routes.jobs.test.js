@@ -7,12 +7,10 @@ const server = require('../app');
 const knex = require('../db/connection');
 const queries = require('../db/queries');
 
-const should = chai.should();
-
+chai.should();
 chai.use(chaiHttp);
 
 describe('Job API Routes', () => {
-
   beforeEach(() => {
     return knex.migrate.rollback()
     .then(() => { return knex.migrate.latest(); })
@@ -80,7 +78,7 @@ describe('Job API Routes', () => {
           title: 'Senior Solutions Architect',
           description: 'Design solutions all day long',
           company: 'NodeGorge',
-          email: 'manager@nodegorge.com'
+          email: 'manager@nodegorge.com',
         })
         .end((err, res) => {
           res.should.have.status(200);
@@ -106,7 +104,7 @@ describe('Job API Routes', () => {
           description: 'Design solutions all day long',
           company: 'NodeGorge',
           email: 'manager@nodegorge.com',
-          contacted: false
+          contacted: false,
         })
         .end((err, res) => {
           res.should.have.status(500);
@@ -122,8 +120,8 @@ describe('Job API Routes', () => {
       });
     });
   });
-  describe ('PUT /:id', () => {
-    it ('should update a job', () => {
+  describe('PUT /:id', () => {
+    it('should update a job', () => {
       return queries.getAllJobs()
       .then((jobsBefore) => {
         const jobID = jobsBefore[0].id;
@@ -134,7 +132,7 @@ describe('Job API Routes', () => {
           description: 'follow the lead architect',
           company: 'Microsoft',
           email: 'manager@example.com',
-          contacted: false
+          contacted: false,
         })
         .end((err, res) => {
           res.should.have.status(200);

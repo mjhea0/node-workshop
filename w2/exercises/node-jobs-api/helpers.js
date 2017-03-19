@@ -8,5 +8,5 @@ function addAsync(num1, num2, cb) {
 
 module.exports = {
   add,
-  addAsync
+  addAsync,
 };

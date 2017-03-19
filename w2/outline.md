@@ -142,6 +142,7 @@ By the end of this session, you should be able to...
 
 Topics:
 
+- Gulp Build Process
 - Redux
 - Capstone planning
 - Agile

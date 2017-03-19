@@ -1,6 +1,6 @@
 const express = require('express');
-const router = express.Router();
 
+const router = express.Router();
 const queries = require('../db/queries.js');
 
 /*
@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
   .then((jobs) => {
     res.json({
       status: 'success',
-      data: jobs
+      data: jobs,
     });
   })
   .catch((err) => { return next(err); });
@@ -21,11 +21,11 @@ router.get('/', (req, res, next) => {
 get single job
  */
 router.get('/:id', (req, res, next) => {
-  return queries.getSingleJob(parseInt(req.params.id))
+  return queries.getSingleJob(parseInt(req.params.id, 10))
   .then((jobs) => {
     res.json({
       status: 'success',
-      data: jobs[0]
+      data: jobs[0],
     });
   })
   .catch((err) => { return next(err); });
@@ -37,10 +37,10 @@ add new job
  */
 router.post('/', (req, res, next) => {
   return queries.addJob(req.body)
-  .then((job) => {
+  .then(() => {
     res.json({
       status: 'success',
-      data: 'Job Added!'
+      data: 'Job Added!',
     });
   })
   .catch((err) => { return next(err); });
@@ -51,11 +51,11 @@ router.post('/', (req, res, next) => {
 update job
  */
 router.put('/:id', (req, res, next) => {
-  return queries.updateJob(parseInt(req.params.id), req.body)
-  .then((job) => {
+  return queries.updateJob(parseInt(req.params.id, 10), req.body)
+  .then(() => {
     res.json({
       status: 'success',
-      data: 'Job Updated!'
+      data: 'Job Updated!',
     });
   })
   .catch((err) => { return next(err); });
@@ -65,11 +65,11 @@ router.put('/:id', (req, res, next) => {
 delete job
  */
 router.delete('/:id', (req, res, next) => {
-  return queries.removeJob(parseInt(req.params.id))
-  .then((jobs) => {
+  return queries.removeJob(parseInt(req.params.id, 10))
+  .then(() => {
     res.json({
       status: 'success',
-      data: 'Job Removed!'
+      data: 'Job Removed!',
     });
   })
   .catch((err) => { return next(err); });
