@@ -71,7 +71,7 @@ By the end of this session, you should be able to...
 ### Outline
 
 1. Stand-up:
-  - How did the homework go?
+  - How did the homework go? How long did it take?
   - What did we cover last time?
 1. [Microservices vs Monolithic Architecture](https://www.mulesoft.com/resources/api/microservices-vs-monolithic)
 1. SPA Practice - add a [jQuery client-side](exercises/node-jobs-client)
@@ -103,7 +103,7 @@ By the end of this session, you should be able to...
 ### Outline
 
 1. Stand-up:
-  - How did the homework go?
+  - How did the homework go? How long did it take?
   - What did we cover last time?
 1. [Postgres + Knex](w2/lessons/02-pg.md)
 1. Tests - add integration tests with mocha and chai
@@ -115,7 +115,7 @@ By the end of this session, you should be able to...
 
 ### Info
 
-- Topics: React
+- Topics: Gulp, React
 - Duration: 6 to 7 hours
 
 ### Objectives
@@ -130,19 +130,18 @@ By the end of this session, you should be able to...
 ### Outline
 
 1. Stand-up:
-  - How did the homework go?
+  - How did the homework go? How long did it take?
   - What did we cover last time?
 1. Test Review
+1. Gulp
 1. [React](w2/lessons/03-react.md)
 1. Homework
   - Finish [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) - day 18 to 30
-
 
 ## Day 5
 
 Topics:
 
-- Gulp
 - Redux
 - Capstone planning
 - Agile
