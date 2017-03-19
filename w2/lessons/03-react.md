@@ -10,12 +10,12 @@
 
 ## Why React?
 
-1. Flexible (???)
-1. Fast (???)
-1. Component-based (???)
-1. Declarative (???)
-1. Simple error handling (???)
-1. Strong community (???)
+1. Flexible
+1. Fast
+1. Component-based
+1. Declarative
+1. Simple error handling (with create react app)
+1. Strong community
 
 ## Create React App
 
@@ -98,8 +98,8 @@ ReactDOM.render(
 
 What's happening?
 
-1. foo
-1. bar
+1. We created a functional component called `App`, which returns the JSX
+1. We then use `render()` to mount the `App` to the DOM
 
 Add bootstrap to the *index.html*.
 
@@ -141,8 +141,15 @@ ReactDOM.render(
 
 What's happening?
 
-1. foo
-1. bar
+1. `constructor` - runs automatically when an instance is created
+1. `super()` calls constructor of `Component`, which we're extending from
+1. `getJobs()` makes an AJAX call to our server
+1. React is handling the creation of the instance:
+  ```javascript
+  const Test = new App()
+  Test.getJobs()
+  test.render()
+  ```
 
 Why is it a class?
 
@@ -158,10 +165,18 @@ getJobs() {
 }
 ```
 
+Add this to the constructor:
+
+```javascript
+this.state = {
+  jobs: []
+}
+```
+
 What's happening?
 
-1. foo
-1. bar
+1. `this.state` add `state` property and sets `jobs` to empty array
+1. `setState()` async function to update state
 
 ### Step 4
 
@@ -186,8 +201,8 @@ render() {
 
 What's happening?
 
-1. foo
-1. bar
+1. Iterated over the jobs and created a new element
+1. `key`? for react to keep track of each element
 
 ### Step 5
 
@@ -213,10 +228,12 @@ export default JobList;
 
 What's happening?
 
-1. foo
-1. bar
+1. We created a functional component called `JobList`, which returns the JSX
 
-Why is this component a function and not a class? Props? Props vs State??
+Why is this component a function and not a class? Props? Props vs State?
+
+1. Props - data flows down via `props` (from `state` to `props`), read only
+1. State - data tied to a component, read and write
 
 Add the import to *index.js*:
 
@@ -239,8 +256,7 @@ render() {
 
 What's happening?
 
-1. foo
-1. bar
+1. State is being passed to the `JobList` component as a `prop`
 
 ### Step 6
 
