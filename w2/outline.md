@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.9
+v0.0.10
 
 ### End Goal
 
@@ -133,7 +133,7 @@ By the end of this session, you should be able to...
   - How did the homework go? How long did it take?
   - What did we cover last time?
 1. Test Review
-1. Gulp
+1. [Gulp](w2/lessons/04-gulp.md)
 1. [React](w2/lessons/03-react.md)
 1. Homework
   - Finish [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) - day 18 to 30
