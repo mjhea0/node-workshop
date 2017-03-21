@@ -1,36 +1,26 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 
-class AddJob extends Component {
+class UpdateJob extends Component {
 
   constructor(props) {
     super(props)
-    this.getJobs = props.getJobs
-    this.toggleShowAddJobForm = props.toggleShowAddJobForm
+    this.toggleShowUpdateJobForm = props.toggleShowUpdateJobForm
+    this.job = props.job
+    this.state = {
+      jobInfo: ''
+    }
   }
 
-  addJob(event) {
-    event.preventDefault();
-    const data = {
-      title: this.refs.title.value,
-      description: this.refs.description.value,
-      company: this.refs.company.value,
-      email: this.refs.email.value
-    }
-    axios.post(`http://localhost:8080/api/v1/jobs`, data)
-    .then((res) => {
-      this.getJobs();
-      this.toggleShowAddJobForm();
-    })
-    .catch((err) => { console.log(err); });
-  }
+  // ajax request to get the job
 
   render() {
     return (
       <div>
-        <h2>Add Job</h2>
-        <form onSubmit={ (event) => this.addJob(event) }>
+        <p>{ this.job }</p>
+        <h2>Update Job</h2>
+        <form>
           <div className="form-group">
             <input type="text" className="form-control" name="title" defaultValue="title" ref="title" required/>
           </div>
@@ -44,9 +34,9 @@ class AddJob extends Component {
             <input type="email" className="form-control" name="email" defaultValue="email@email.com" ref="email" required/>
           </div>
           <div className="form-group">
-            <button type="button" className="btn btn-default" data-dismiss="modal" onClick={ () => this.toggleShowAddJobForm() } >Close</button>
+            <button type="button" className="btn btn-default" data-dismiss="modal" onClick={ () => this.toggleShowUpdateJobForm() } >Close</button>
             <span>&nbsp;</span>
-            <button type="submit" className="btn btn-primary" id="add-job">Add</button>
+            <button type="submit" className="btn btn-primary" id="update-job">Update</button>
           </div>
         </form>
       </div>
@@ -55,4 +45,4 @@ class AddJob extends Component {
 
 }
 
-export default AddJob;
+export default UpdateJob;

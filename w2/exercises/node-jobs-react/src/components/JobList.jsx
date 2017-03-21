@@ -27,7 +27,15 @@ const JobList = (props) => {
                 <td>{ job.company }</td>
                 <td>{ job.email }</td>
                 <td>{ job.contacted ? 'yes' : 'no' }</td>
-                <td><button className="btn btn-warning btn-sm">Update</button></td>
+                <td>
+                  <button
+                    className="btn btn-warning btn-sm"
+                    onClick={ () => {
+                      props.toggleShowUpdateJobForm();
+                      props.getJob(job.id)
+                    }}
+                  >Update</button>
+                </td>
                 <td>
                   <button
                     className="btn btn-danger btn-sm"

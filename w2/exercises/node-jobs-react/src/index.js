@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import JobList from './components/JobList';
 import AddJob from './components/AddJob';
+import UpdateJob from './components/UpdateJob';
 
 
 class App extends Component {
@@ -12,7 +13,9 @@ class App extends Component {
     super()
     this.state = {
       jobs: [],
-      showForm: false
+      showAddJobForm: false,
+      showUpdateJobForm: false,
+      updateJob: ''
     }
     this.getJobs() // => should add to a proper lifecycle method
   }
@@ -31,17 +34,34 @@ class App extends Component {
     .catch((err) => { console.log(err); });
   }
 
-  toggleShowForm() {
-    let conditional = this.state.showForm
-    this.setState({ showForm: !conditional })
+  getJob(jobID) {
+    this.setState({ updateJob: jobID })
+  }
+
+  toggleShowAddJobForm() {
+    let conditional = this.state.showAddJobForm
+    this.setState({ showAddJobForm: !conditional })
+  }
+
+  toggleShowUpdateJobForm() {
+    let conditional = this.state.showUpdateJobForm
+    this.setState({ showUpdateJobForm: !conditional })
   }
 
   show() {
-    if (this.state.showForm) {
+    if (this.state.showAddJobForm) {
       return (
         <AddJob
           getJobs={ this.getJobs.bind(this) }
-          toggleShowForm={ this.toggleShowForm.bind(this) }
+          toggleShowAddJobForm={ this.toggleShowAddJobForm.bind(this) }
+        />
+      )
+    }
+    else if (this.state.showUpdateJobForm) {
+      return (
+        <UpdateJob
+          job={ this.state.updateJob }
+          toggleShowUpdateJobForm={ this.toggleShowUpdateJobForm.bind(this) }
         />
       )
     }
@@ -50,11 +70,13 @@ class App extends Component {
         <div>
           <button
             className="btn btn-success"
-            onClick={ () => this.toggleShowForm() }
+            onClick={ () => this.toggleShowAddJobForm() }
             >Add Job</button>
           <JobList
             jobs={ this.state.jobs }
+            getJob={ this.getJob.bind(this) }
             removeJob={ this.removeJob.bind(this) }
+            toggleShowUpdateJobForm={ this.toggleShowUpdateJobForm.bind(this) }
           />
         </div>
       )
