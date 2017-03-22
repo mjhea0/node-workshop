@@ -6,16 +6,17 @@ class UpdateJob extends Component {
 
   constructor(props) {
     super(props)
+    this.getJobs = props.getJobs
     this.toggleShowUpdateJobForm = props.toggleShowUpdateJobForm
     this.job = props.job
     this.state = {
-      jobInfo: ''
+      jobInfo: '',
     }
     this.getJob() // => should add to a proper lifecycle method
   }
 
   // ajax request to get the job
-  getJob(jobID) {
+  getJob() {
     axios.get(`http://localhost:8080/api/v1/jobs/${this.job}`)
     .then((res) => {
       this.setState({ jobInfo: res.data.data })
@@ -23,13 +24,23 @@ class UpdateJob extends Component {
       this.refs.description.value = this.state.jobInfo.title
       this.refs.company.value = this.state.jobInfo.company
       this.refs.email.value = this.state.jobInfo.email
-      // if (this.state.jobInfo.contacted) {
-      //   this.refs.contacted-no.value = true;
-      //   this.refs.contacted-yes.value = false
-      // } else {
-      //   this.refs.contacted-no.value = false;
-      //   this.refs.contacted-yes.value = true
-      // }
+    })
+    .catch((err) => { console.log(err); });
+  }
+
+  updateJob(event) {
+    event.preventDefault();
+    const data = {
+      title: this.refs.title.value,
+      description: this.refs.description.value,
+      company: this.refs.company.value,
+      email: this.refs.email.value,
+      contacted: this.refs.contacted.value === 'Yes' ? true : false
+    }
+    axios.put(`http://localhost:8080/api/v1/jobs/${this.job}`, data)
+    .then((res) => {
+      this.getJobs();
+      this.toggleShowUpdateJobForm();
     })
     .catch((err) => { console.log(err); });
   }
@@ -38,7 +49,7 @@ class UpdateJob extends Component {
     return (
       <div>
         <h2>Update Job</h2>
-        <form>
+        <form onSubmit={ (event) => this.updateJob(event) }>
           <div className="form-group">
             <input type="text" className="form-control" name="title" ref="title" required/>
           </div>
@@ -54,9 +65,13 @@ class UpdateJob extends Component {
           <div className="form-group">
             <label htmlFor="contacted">Contacted?</label>
             <span>&nbsp;</span>
-            <select className="contacted" id="contacted">
-              <option defaultValue="0" ref="contacted-no">No</option>
-              <option defaultValue="1" ref="contacted-yes">Yes</option>
+            <select className="contacted" ref="contacted" id="contacted">
+              <option
+                defaultValue="0" selected={ !this.state.jobInfo.contacted }
+              >No</option>
+              <option
+                defaultValue="1" selected={ this.state.jobInfo.contacted }
+              >Yes</option>
             </select>
           </div>
           <br/>

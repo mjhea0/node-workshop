@@ -61,6 +61,7 @@ class App extends Component {
       return (
         <UpdateJob
           job={ this.state.updateJob }
+          getJobs={ this.getJobs.bind(this) }
           toggleShowUpdateJobForm={ this.toggleShowUpdateJobForm.bind(this) }
         />
       )
