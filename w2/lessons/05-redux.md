@@ -1,10 +1,5 @@
 # Redux Intro
 
-## Topics
-
-1. foo
-1. bar
-
 ## Principles
 
 1. **Single source of truth**: The *state* of your whole application is stored in an object tree within a single *store*.

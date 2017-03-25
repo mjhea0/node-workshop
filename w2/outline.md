@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.10
+v0.0.11
 
 ### End Goal
 
@@ -150,11 +150,33 @@ By the end of this session, you should be able to...
 
 ## Day 5
 
-- Redux
+### Info
+
+- Topics: Redux
+- Duration: 6 to 7 hours
+
+### Objectives
+
+By the end of this session, you should be able to...
+
+1. Describe Redux along with the "Three Principles" of Redux
+1. Describe the difference between actions, reducers, stores as well as how each relates to state
+1. Add Redux to a React app created with the Create-React-App boilerplate
+1. Set up a basic React + Redux app
+1. Add Redux to the existing React Jobs App
+
+### Outline
+
+1. Stand-up:
+  - How did the homework go? How long did it take?
+  - What did we cover last time?
+1. Review React
+1. [Redux](w2/lessons/04-redux.md)
+1. Homework
+  - Capstone planning
 
 ## Other
 
 - Gulp Build Process
-- Capstone planning
 - Agile
 - Feature branch workflow
