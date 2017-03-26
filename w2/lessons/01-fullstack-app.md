@@ -13,10 +13,10 @@ Code along!
   - CRUD
     - create GET ALL route for `/api/v1/jobs`, return JSON
     - refactor to `/jobs`, server-side templating, render a table
-    - add a puppy
+    - add a job
     - create a model
-    - update a puppy
-    - delete a puppy
+    - update a job
+    - delete a job
   - RESTful API refactor
 1. Client
   - SPA w/ jQuery
