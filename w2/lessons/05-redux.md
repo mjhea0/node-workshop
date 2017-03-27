@@ -12,10 +12,10 @@
 
 Let's start with the [basics](http://redux.js.org/docs/basics/)...
 
-1. State - ??
-1. Actions - ??
-1. Reducers - ??
-1. Store - ??
+1. State - an object, probably nested
+1. Actions - describes intended change of state, declarative
+1. Reducers - pure function, which takes the previous state and action as arguments, returns updated state, should be the only thing updating state
+1. Store - where state lives
 
 ## Example
 
@@ -40,7 +40,7 @@ $ npm i redux react-redux --save
 Add the following directories and files to "src":
 
 ```sh
-cd src && mkdir actions components reducers && touch store.js cd ..
+$ cd src && mkdir actions components reducers && touch store.js && cd ..
 ```
 
 Your app structure should look like:
@@ -91,15 +91,9 @@ ReactDOM.render(
 );
 ```
 
-What's happening?
-
-1. foo
-1. bar
-
 Why is the `h1` not showing up?
 
-1. foo
-1. bar
+1. `createStore()` takes an reducer, which is a function
 
 Add bootstrap to the *index.html*.
 
@@ -115,11 +109,6 @@ const reducer = (state=0, action) => { return state; }
 const store = createStore(reducer);
 console.log(store.getState());
 ```
-
-What's happening?
-
-1. foo
-1. bar
 
 ### Step 3 - add action
 
@@ -141,11 +130,6 @@ console.log('before -> ', store.getState());
 store.dispatch(increment);
 console.log('after -> ', store.getState());
 ```
-
-What's happening?
-
-1. foo
-1. bar
 
 ### Step 3 - add action
 
