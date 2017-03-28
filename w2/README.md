@@ -4,7 +4,7 @@ This workshop reviews JavaScript and then jumps right in to building a full-stac
 
 ## Material
 
-Material for a 4-day workshop:
+Material for a 5-day workshop:
 
 | Event    | Hours         |
 |----------|---------------|
