@@ -26,19 +26,18 @@ const store = createStore(reducer);
 /*
 react component
  */
-const html = (
-  <div className="container text-center col-xs-3 col-xs-offset-5">
-    <Calc
-      value={store.getState()}
-      add={ () => store.dispatch(operations.add) }
-      sub={ () => store.dispatch(operations.sub) }
-      mul={ () => store.dispatch(operations.mul) }
-      div={ () => store.dispatch(operations.div) }
-    />
-  </div>
-)
 const App = () => {
-  return html
+  return (
+    <div className="container text-center col-xs-3 col-xs-offset-5">
+      <Calc
+        value={store.getState()}
+        add={ () => store.dispatch(operations.add) }
+        sub={ () => store.dispatch(operations.sub) }
+        mul={ () => store.dispatch(operations.mul) }
+        div={ () => store.dispatch(operations.div) }
+      />
+    </div>
+  )
 }
 /*
 react render
