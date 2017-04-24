@@ -16,7 +16,7 @@ Let's deploy a Node, Express, Mongo app to [Heroku](https://www.heroku.com/)...
 
 ## Adding MongoLab
 
-If you're app uses Mongo, then you need to create a database in the cloud:
+If your app uses Mongo, then you need to create a database in the cloud:
 
 ```sh
 $ heroku addons:create mongolab
