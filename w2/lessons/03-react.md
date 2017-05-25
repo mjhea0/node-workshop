@@ -37,7 +37,7 @@ $ cd node-jobs-react
 $ npm start
 ```
 
-> **NOTE:** Make sure you understand what's happening beneath this scenes with webpack and babel. For more, check out [React Intro](https://github.com/mjhea0/react-intro).
+> **NOTE:** Make sure you understand what's happening beneath the scenes with webpack and babel. For more, check out [React Intro](https://github.com/mjhea0/react-intro).
 
 ### Structure
 
@@ -155,7 +155,7 @@ Why is it a class?
 
 ### Step 3
 
-Update the `getJobs()`:
+Update `getJobs()`:
 
 ```javascript
 getJobs() {
@@ -175,7 +175,7 @@ this.state = {
 
 What's happening?
 
-1. `this.state` add `state` property and sets `jobs` to empty array
+1. `this.state` adds `state` property and sets `jobs` to an empty array
 1. `setState()` async function to update state
 
 ### Step 4

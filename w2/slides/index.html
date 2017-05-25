@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to React</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Introduction to React
+"my `MV*` is better than your `MV*`"
+<br><br><br><br>
+<small>Presented by *Michael Herman* on *May 26th, 2017*</small>
+
+---
+
+## Note
+
+This talk assumes you have gone through the [Intro to React](https://github.com/mjhea0/react-intro) tutorial.
+
+---
+
+## Agenda
+
+--
+
+1. About Me
+1. Objectives
+
+##### (1) Theory
+
+1. What is React?
+1. Why React?
+
+--
+
+##### (2) Practice
+
+1. Express Server-side Setup
+1. Create React App
+  - project setup
+  - structure
+  - new project
+  - class-based component
+  - ajax
+  - lifecycle methods
+  - `setState()`
+  - functional component
+
+---
+
+## About Me
+
+```
+$ whoami
+michael.herman
+```
+--
+
+#### Day Job:
+
+[Galvanize](http://www.galvanize.com/) (since May 2015)...
+
+1. ~~Lead Instructor Full Stack~~
+1. ~~Curriculum Developer~~
+1. Senior Software Engineer
+
+--
+
+#### Also:
+
+1. Co-founder/author of [Real Python](https://realpython.com)
+1. 😍 - [tech writing](http://mherman.org), [open source](http://github.com/mjhea0), [financial models](http://www.starterfinancialmodel.com/), [radiohead](http://radiohead.com/), [chilling](images/me.jpg)
+
+---
+
+## Objectives
+
+By the end of this talk you should be able to:
+
+1. Explain what React is
+1. Create a SPA with React components
+1. Use props and state appropriately
+1. Manage the state of a React component via component lifecycle methods
+1. Make API calls to an Express backend
+
+---
+
+## What is React?
+
+What is it? How does it compare to Angular?
+
+https://facebook.github.io/react/tutorial/tutorial.html#what-is-react
+
+---
+
+## Why use React?
+
+1. Flexible
+1. Fast (virtual dom!)
+1. Component-based
+1. Declarative
+1. Simple error handling (with create react app)
+1. Strong community
+
+---
+
+## Express Server-side Setup
+
+1. Clone repo:
+
+  ```sh
+  $ git clone https://github.com/mjhea0/node-workshop.git
+  ```
+
+1. Install Dependencies
+
+  ```sh
+  $ cd w2/exercises/node-jobs-api
+  $ npm install
+  ```
+
+1. Create postgres databases - `node_jobs_dev` and `node_jobs_test`
+
+1. Apply migrations and seed
+
+  ```sh
+  $ knex migrate:latest --env development
+  $ knex seed:run --env development
+  ```
+
+1. Run app:
+
+  ```sh
+  gulp
+  ```
+
+
+---
+
+## Project Setup
+
+[Create React App](https://github.com/facebookincubator/create-react-app)
+
+Install:
+
+```sh
+$ npm install -g create-react-app
+```
+
+Quick start:
+
+```sh
+$ create-react-app node-jobs-react
+$ cd node-jobs-react
+$ npm start
+```
+
+--
+
+Why Create React App?
+
+--
+
+1. You get a nice boilerplate all set up and ready to go.
+1. You do not have to worry about configuring Webback and Babel.
+1. You get sane errors
+
+--
+
+<small>Make sure you understand what's happening beneath the scenes with webpack and babel. For more, check out [React Intro](https://github.com/mjhea0/react-intro).</small>
+
+---
+
+## Structure
+
+```sh
+$ tree -I node_modules
+```
+
+Navigate through the "src" folder. What's happening with each one of these files?
+
+1. *App.css*
+1. *App.js*
+1. *App.test.js*
+1. *index.css*
+1. *index.js*
+
+Take a look at the *package.json*. What do each of these commands do?
+
+1. "start": "react-scripts start",
+1. "build": "react-scripts build",
+1. "test": "react-scripts test --env=jsdom",
+1. "eject": "react-scripts eject"
+
+---
+
+## New Project
+
+Remove everything except the *index.js*:
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const App = () => {
+  return (
+    <div className="container">
+      <h1>Node Jobs</h1>
+    </div>
+  )
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+```
+
+--
+
+What's happening?
+
+--
+
+1. We created a functional component called `App`, which returns JSX
+1. We then use `render()` to mount the `App` to the DOM
+
+---
+
+## Class-based Component
+
+Update *index.js*:
+
+```javascript
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+class App extends Component {
+  constructor() {
+    super()
+  }
+  render() {
+    return (
+      <div className="container"><h1>Node Jobs</h1></div>
+    )
+  }
+}
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+```
+
+--
+
+What's happening?
+
+--
+
+1. `constructor` - runs automatically when an instance is created
+1. `super()` calls constructor of `Component`, which we're extending from
+
+---
+
+## AJAX
+
+Add a `getJobs()` method:
+
+```javascript
+getJobs() {
+  axios.get(`http://localhost:8080/api/v1/jobs`)
+  .then((res) => { console.log(res); })
+  .catch((err) => { console.log(err); })
+}
+```
+
+Don't forget the import:
+
+```javascript
+import axios from 'axios';
+```
+
+Call the method in the constructor to test:
+
+```javascript
+constructor() {
+  super()
+  this.getJobs()
+}
+```
+
+--
+
+Why should you *not* call the method in the constructor?
+
+---
+
+## Component Lifecycle Methods
+
+https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle
+
+--
+
+Where should AJAX calls happen?
+
+--
+
+`componentDidMount()` - [why](https://daveceddia.com/where-fetch-data-componentwillmount-vs-componentdidmount/)?
+
+--
+
+<p>Update:</p>
+
+```javascript
+componentDidMount() {
+  this.getJobs();
+}
+```
+
+---
+
+## `setState()` (part 1)
+
+Update `getJobs()`:
+
+```javascript
+getJobs() {
+  axios.get(`http://localhost:8080/api/v1/jobs`)
+  .then((res) => { this.setState({ jobs: res.data.data }); })
+  .catch((err) => { console.log(err); })
+}
+```
+
+Add this to the constructor:
+
+```javascript
+this.state = {
+  jobs: []
+}
+```
+
+--
+
+What's happening?
+
+--
+
+1. `this.state` adds `state` property and sets `jobs` to an empty array. Why set an initial state of an empty array?
+1. `setState()` async function to update state
+
+---
+
+## `setState()` (part 2)
+
+Update the `render()` method:
+
+```javascript
+render() {
+  return (
+    <div className="container">
+      <h1>Node Jobs</h1>
+      <ul>
+        {
+          this.state.jobs.map((job) => {
+            return <li key={ job.id }>{ job.title }</li>
+          })
+        }
+      </ul>
+    </div>
+  )
+}
+```
+
+--
+
+What's happening?
+
+--
+
+1. Iterated over the jobs and created a new element. This is why we needed to set an initial state. This prevents the `map` from exploding.
+1. `key`? - used for React to keep track of each element
+
+---
+
+## Functional Component (part 1)
+
+Let's create a new component for the job list. Add a new folder called "components" to "src". Add a new file to that folder called *JobList.jsx*:
+
+```javascript
+import React from 'react';
+
+const JobList = (props) => {
+  return (
+    <ul>
+      {
+        props.jobs.map((job) => {
+          return <li key={ job.id }>{ job.title }</li>
+        })
+      }
+    </ul>
+  )
+}
+
+export default JobList;
+
+```
+
+--
+
+What's happening?
+
+--
+
+1. We created a functional component called `JobList`, which returns the JSX
+
+---
+
+## Functional Component (part 2)
+
+Why is this component a function and not a class?
+
+--
+
+1. stateless!
+
+--
+
+What are Props? Props vs State?
+
+--
+
+1. Props - data flows down via `props` (from `state` to `props`), read only
+1. State - data tied to a component, read and write
+
+---
+
+## Functional Component (part 3)
+
+Add the import to *index.js*:
+
+```javascript
+import JobList from './components/JobList';
+```
+
+Update `render()`:
+
+```javascript
+render() {
+  return (
+    <div className="container">
+      <h1>Node Jobs</h1>
+      <JobList jobs={ this.state.jobs }/>
+    </div>
+  )
+}
+```
+
+--
+
+What's happening?
+
+--
+
+1. State is being passed to the `JobList` component as a `prop`
+
+---
+
+## Functional Component (part 4)
+
+Let's convert the list to a table and add some style...
+
+---
+
+## Cheers!
+
+Questions?
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
