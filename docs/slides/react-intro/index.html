@@ -288,7 +288,7 @@ What's happening?
 
 ---
 
-## AJAX
+## AJAX (part 1)
 
 Add a `getJobs()` method:
 
@@ -305,6 +305,16 @@ Don't forget the import:
 ```javascript
 import axios from 'axios';
 ```
+
+Add script tag to the *index.html*:
+
+```html
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js"></script>
+```
+
+---
+
+## AJAX (part 2)
 
 Call the method in the constructor to test:
 
@@ -383,7 +393,7 @@ What's happening?
 --
 
 1. `this.state` adds `state` property and sets `jobs` to an empty array. Why set an initial state of an empty array?
-1. `setState()` async function to update state
+1. `setState()` async function to update state (state is immutable)
 
 ---
 
