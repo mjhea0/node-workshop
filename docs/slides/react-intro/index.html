@@ -47,17 +47,17 @@ This talk assumes you have gone through the [Intro to React](https://github.com/
 
 --
 
-1. About Me
-1. Objectives
+##### (1) About Me
+##### (2) Objectives
 
-##### (1) Theory
+##### (3) Theory
 
 1. What is React?
 1. Why React?
 
 --
 
-##### (2) Practice
+##### (4) Practice
 
 1. Express Server-side Setup
 1. Create React App
@@ -120,44 +120,42 @@ https://facebook.github.io/react/tutorial/tutorial.html#what-is-react
 ## Why use React?
 
 1. Flexible
-1. Fast (virtual dom!)
-1. Component-based
+1. Fast ([virtual dom](https://medium.com/@gethylgeorge/how-virtual-dom-and-diffing-works-in-react-6fc805f9f84e)!)
+1. Component-based (*think in terms of components rather than templates*)
 1. Declarative
-1. Simple error handling (with create react app)
+1. Simple error handling (with *create react app*)
 1. Strong community
 
 ---
 
 ## Express Server-side Setup
 
-1. Clone repo:
+1. Clone repo and install dependencies
 
   ```sh
   $ git clone https://github.com/mjhea0/node-workshop.git
-  ```
-
-1. Install Dependencies
-
-  ```sh
   $ cd w2/exercises/node-jobs-api
   $ npm install
   ```
 
 1. Create postgres databases - `node_jobs_dev` and `node_jobs_test`
 
-1. Apply migrations and seed
+  > **NOTE:** You may need to update the connection strings within the *knexfile.js* if your databases have usernames and/or passwords.
+
+1. Apply migrations and seed the db
 
   ```sh
   $ knex migrate:latest --env development
   $ knex seed:run --env development
   ```
 
-1. Run app:
+1. Run the darn app
 
   ```sh
   gulp
   ```
 
+1. Test @ http://localhost:8080/api/v1/jobs
 
 ---
 
@@ -165,13 +163,13 @@ https://facebook.github.io/react/tutorial/tutorial.html#what-is-react
 
 [Create React App](https://github.com/facebookincubator/create-react-app)
 
-Install:
+Install
 
 ```sh
-$ npm install -g create-react-app
+$ npm install -g create-react-app@1.3.0
 ```
 
-Quick start:
+Quick start
 
 ```sh
 $ create-react-app node-jobs-react
@@ -186,8 +184,8 @@ Why Create React App?
 --
 
 1. You get a nice boilerplate all set up and ready to go.
-1. You do not have to worry about configuring Webback and Babel.
-1. You get sane errors
+1. You do not have to configure Webpack and Babel to get your app going.
+1. You get sane errors messages.
 
 --
 
@@ -220,7 +218,7 @@ Take a look at the *package.json*. What do each of these commands do?
 
 ## New Project
 
-Remove everything except the *index.js*:
+Remove the *App.css*, *App.js*, *App.test.js*, *index.css* and then update *index.js*:
 
 ```javascript
 import React from 'react';
@@ -248,6 +246,10 @@ What's happening?
 
 1. We created a functional component called `App`, which returns JSX
 1. We then use `render()` to mount the `App` to the DOM
+
+--
+
+Why is `className` in camelCase?
 
 ---
 
@@ -281,8 +283,8 @@ What's happening?
 
 --
 
-1. `constructor` - runs automatically when an instance is created
-1. `super()` calls constructor of `Component`, which we're extending from
+1. `constructor` - runs automatically when an instance is created (but when is the instance created?)
+1. `super()` calls constructor of `Component`, which `App` extends from
 
 ---
 
@@ -319,11 +321,22 @@ Why should you *not* call the method in the constructor?
 
 ---
 
-## Component Lifecycle Methods
+## Component Lifecycle Methods (part 1)
 
-https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle
+Resources:
 
---
+- https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle
+- https://alligator.io/react/lifecycle-functions/
+
+<div style="text-align:center;">
+  <img src="images/lifecycle.png" style="max-width: 65%; border:0; box-shadow: none;" alt="Component Lifecycle Methods">
+</div>
+
+<small>(Image source: http://aaronice.github.io/2015/12/15/react-study/)</small>
+
+---
+
+## Component Lifecycle Methods (part 2)
 
 Where should AJAX calls happen?
 
@@ -355,7 +368,7 @@ getJobs() {
 }
 ```
 
-Add this to the constructor:
+Add state to the constructor:
 
 ```javascript
 this.state = {
@@ -401,8 +414,8 @@ What's happening?
 
 --
 
-1. Iterated over the jobs and created a new element. This is why we needed to set an initial state. This prevents the `map` from exploding.
-1. `key`? - used for React to keep track of each element
+1. Iterated over the jobs (from the AJAX request) and created a new element. This is why we needed to set an initial state - it prevents `map` from exploding.
+1. `key`? - used by React to keep track of each element
 
 ---
 
@@ -435,7 +448,7 @@ What's happening?
 
 --
 
-1. We created a functional component called `JobList`, which returns the JSX
+1. We created a functional component called `JobList`, which returns JSX.
 
 ---
 
@@ -445,7 +458,15 @@ Why is this component a function and not a class?
 
 --
 
-1. stateless!
+*stateless!*
+
+--
+
+Okay. But how is it getting state?
+
+--
+
+*props!*
 
 --
 
@@ -460,7 +481,7 @@ What are Props? Props vs State?
 
 ## Functional Component (part 3)
 
-Add the import to *index.js*:
+Let's give the sub component access to state. Add the import to *index.js*:
 
 ```javascript
 import JobList from './components/JobList';
