@@ -67,12 +67,12 @@ Your app structure should look like:
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Redux from 'redux';
+import { createStore } from 'redux';
 
 /*
 redux
  */
-const store = Redux.createStore();
+const store = createStore();
 
 /*
 react component
