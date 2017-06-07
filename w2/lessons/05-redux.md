@@ -1,5 +1,7 @@
 # Redux Intro
 
+Predictable state management...
+
 ## Principles
 
 1. **Single source of truth**: The *state* of your whole application is stored in an object tree within a single *store*.
@@ -162,7 +164,7 @@ Add a decrement action.
     export default reducer;
     ```
 
-1. Update `redux` portion of *index.js*, making store add the correct imports:
+1. Update `redux` portion of *index.js*, making sure to add the correct imports:
 
     ```javascript
     /*
@@ -230,7 +232,7 @@ class App extends Component {
         <p>Value: <span>{ this.props.value }</span></p>
         <button
           className="btn btn-success"
-          onClick={ this.props.onIncrement }
+          onClick={ store.dispatch(increment) }
         >+</button>
       </div>
     )

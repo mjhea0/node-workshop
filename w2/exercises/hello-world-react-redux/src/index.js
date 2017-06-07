@@ -1,19 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './components/App.jsx'
 import store from './store'
-import increment from './actions'
+import incrementAction from './actions'
+import Child from './components/Child'
+
+const App = () => {
+  return (
+    <div className="container">
+      <h1>Hello, World!</h1>
+      <br/>
+      <p>Value: <span>{  store.getState() }</span></p>
+      <button
+        className="btn btn-success"
+        onClick={ () => store.dispatch(incrementAction) }
+      >+</button>
+      <br/>
+      <Child
+        onIncrement={ () => store.dispatch(incrementAction) }
+      />
+    </div>
+  )
+}
 
 const render = () => {
   ReactDOM.render(
-    <App
-      value={ store.getState() }
-      onIncrement={ () => store.dispatch(increment) }
-    />,
+    <App />,
     document.getElementById('root')
-  );
-};
+  )
+}
 
 store.subscribe(render);
-render();
+render()

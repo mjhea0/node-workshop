@@ -1,3 +1,3 @@
-const increment = { type: 'INCREMENT' };
+const incrementAction = { type: 'INCREMENT' };
 
-export default increment;
+export default incrementAction;
