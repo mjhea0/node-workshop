@@ -230,7 +230,6 @@ const App = () => {
     </div>
   )
 }
-
 ReactDOM.render(
   <App />,
   document.getElementById('root')
@@ -317,7 +316,7 @@ The `dispatch()` applies the action to the store so that the state is changed.
 
 ## Refactor (part 1)
 
-First, move the store to *stores.js*:
+First, move the store to *store.js*:
 
 ```javascript
 import { createStore } from 'redux';
@@ -500,6 +499,7 @@ That's it! What's next?
 1. Make it look nice. Add Bootstrap.
 1. Grab the final [code](https://github.com/mjhea0/node-workshop/tree/master/w2/exercises/hello-world-react-redux).
 1. Turn to the [node-jobs-react-class](https://github.com/mjhea0/node-workshop/tree/master/w2/exercises/node-jobs-react-class) project. Add Redux and add jobs to a new store. Make sure to handle the AJAX request correctly.
+1. Read [Build Yourself a Redux](https://zapier.com/engineering/how-to-build-redux/) - highly recommended!
 
 Questions?
 
