@@ -155,7 +155,7 @@ By the end of this talk you should be able to:
 1. Work with React running inside a Docker Container
 1. Simply your development workflow with Docker Compose
 1. Pass environment variables to a Docker image at build time
-1. Set up something
+1. Utilize volumes to mount your code into a container
 1. Do something
 1. Add something
 
@@ -221,7 +221,7 @@ Once spun up, the app will be available on port `3333` on the host machine and o
 
 --
 
-Test - [localhost:3333](localhost:3333)
+Test - [http://localhost:3333](http://localhost:3333)
 
 --
 
@@ -239,15 +239,17 @@ Other commands:
 Simplify your workflow with [Docker Compose](https://docs.docker.com/compose/). Add a *docker-compose.yml* file to the project root:
 
 ```yaml
-version: '2.1'
+version: "2.1"
 
-web-service:
-  container_name: web-service
-  build: ./
-  ports:
-    - '3337:3000' # expose ports - HOST:CONTAINER
-  environment:
-    - NODE_ENV=development
+services:
+
+  react-service:
+    container_name: react-service
+    build: ./
+    ports:
+      - '3337:3000' # expose ports - HOST:CONTAINER
+    environment:
+      - NODE_ENV=development
 ```
 
 --
@@ -255,19 +257,44 @@ web-service:
 Running a number of microservices locally each within a different project repo? Docker Compose helps to link them together, making it feel almost as easy as running a monolith with a single run command:
 
 ```sh
-$ docker-compose up -d
+$ docker-compose up -d --build
 ```
 
 --
 
-Test - [localhost:3337](localhost:3337)
+Test - [http://localhost:3337](http://localhost:3337)
 
 ---
 
 ### Development Workflow (part 3)
 
+Add a [volume](https://docs.docker.com/engine/tutorials/dockervolumes/) instruction to the Compose file:
 
-Coding workflow
+```yaml
+volumes:
+  - './:/usr/src/app'
+  - '/usr/src/app/node_modules'
+```
+
+--
+
+Volumes are used to mount a directory inside a container so that you can make modifications to the code *without* having to rebuild the image. This should be a default in your local development environment so you quickly get feedback on code changes.
+
+--
+
+To prevent the volume - `/usr/src/app` - from overriding the *node_modules*, we used a data volume - `/usr/src/app/node_modules`. This may or may not be necessary, depending on the order in which you set up your image and containers. Check out [Getting npm packages to be installed with docker-compose](http://dchua.com/2016/02/07/getting-npm-packages-to-be-installed-with-docker-compose/) for more.
+
+--
+
+Update the container:
+
+```sh
+$ docker-compose up -d
+```
+
+--
+
+Test auto reload! Make a change to the code and watch it update in the browser...
 
 ---
 
