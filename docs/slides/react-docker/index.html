@@ -153,7 +153,8 @@ michael.herman
 By the end of this talk you should be able to:
 
 1. Work with React running inside a Docker Container
-1. Describe something
+1. Simply your development workflow with Docker Compose
+1. Pass environment variables to a Docker image at build time
 1. Set up something
 1. Do something
 1. Add something
@@ -175,7 +176,7 @@ Want to see some bigger examples?
 
 ### Development Workflow (part 1)
 
-Add a *Dockerfile* to the project root...
+Add a *Dockerfile* to the project root:
 
 ```yaml
 FROM node:latest
@@ -235,7 +236,31 @@ Other commands:
 ### Development Workflow (part 2)
 
 
-Simplify with Docker Compose
+Simplify your workflow with [Docker Compose](https://docs.docker.com/compose/). Add a *docker-compose.yml* file to the project root:
+
+```yaml
+version: '2.1'
+
+web-service:
+  container_name: web-service
+  build: ./
+  ports:
+    - '3337:3000' # expose ports - HOST:CONTAINER
+  environment:
+    - NODE_ENV=development
+```
+
+--
+
+Running a number of microservices locally each within a different project repo? Docker Compose helps to link them together, making it feel almost as easy as running a monolith with a single run command:
+
+```sh
+$ docker-compose up -d
+```
+
+--
+
+Test - [localhost:3337](localhost:3337)
 
 ---
 
