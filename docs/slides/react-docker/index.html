@@ -199,27 +199,50 @@ ADD . /usr/src/app
 CMD ["npm", "start"]
 ```
 
-Build the image, and then spin up the container:
+--
+
+Be sure to take advantage of Docker's layered cache system, to speed up build times, by adding the *package.json* and installing the dependencies **before** adding the app's source files. For more on this, check out [Building Efficient Dockerfiles - Node.js](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/).
+
+---
+
+### Development Workflow (part 1, continued...)
+
+Build the image, and then spin up the container in [detached](https://docs.docker.com/engine/reference/run/#detached--d) mode:
 
 ```sh
 $ docker build -t "react-denver"
 $ docker run -d -p 3333:3000 react-denver
 ```
 
+--
+
+Once spun up, the app will be available on port `3333` on the host machine and on port `3000` for other Docker services.
+
+--
+
+Test - [localhost:3333](localhost:3333)
+
+--
+
+Other commands:
+
+1. `docker ps` - view currenly running docker process
+1. `docker images` view built images
+1. `docker help` - sweet goodness!
 
 ---
 
 ### Development Workflow (part 2)
 
 
-Build Context
+Simplify with Docker Compose
 
 ---
 
 ### Development Workflow (part 3)
 
 
-Simplify with Docker Compose
+Coding workflow
 
 ---
 
