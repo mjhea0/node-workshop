@@ -3,6 +3,7 @@
   <head>
     <title>Introduction to Redux</title>
     <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
       @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
@@ -113,7 +114,7 @@ By the end of this talk you should be able to:
 
 http://redux.js.org/docs/introduction/Motivation.html
 
-As your React app grows, state generally becomes more and more spread out amongst different class-based components. This is messy. Plus, state is tightly coupled with the view logic.
+As your React app grows, state generally becomes more and more [spread out](images/state-issues.jpg) amongst different class-based components. This is messy. Plus, state is tightly coupled with the view logic.
 
 --
 
@@ -121,6 +122,24 @@ Redux helps to mitigate those issues by managing state in a single place outside
 
 1. A single source of truth
 1. Seperation of concerns
+
+--
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <a href="images/state-change-without-redux.jpg"><img src="images/state-change-without-redux.jpg" style="width:100%"><a>
+    </div>
+    <div class="col-xs-4">
+      <a href="images/state-change-with-redux.jpg"><img src="images/state-change-with-redux.jpg" style="width:100%"></a>
+    </div>
+  </div>
+</div>
+
+
+
 
 ---
 
