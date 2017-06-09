@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Developing React with Docker</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code { font-family: 'Ubuntu Mono'; }
+      .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+          padding: 2px 4px;
+          font-size: 90%;
+          color: #c7254e;
+          background-color: #f9f2f4;
+          border-radius: 0;
+       }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Developing React with Docker
+[Fitter](https://www.youtube.com/watch?v=HimvFbossU8). [Happier](https://www.youtube.com/watch?v=My10FLH5DT0). [More productive](https://www.youtube.com/watch?v=9ORllD7fA6I).
+<br><br>
+<img src="images/react.png" alt="react logo" style="width:40px">
+<img src="images/docker.png" alt="docker logo" style="width:40px;padding-bottom:7px;">
+<br><br><br>
+<small>Presented by *Michael Herman* and *Caleb Pollman*</small>
+
+
+---
+
+## Agenda
+
+--
+
+--
+
+##### (1) Part 1 - react app overview
+  - About Caleb
+  - Objectives
+  - blah
+  - blah 2
+  - blah 3
+  - blah with a vengence
+
+--
+
+##### (2) Part 2 - docker workflow
+  - About Michael
+  - Objectives
+  - Why Docker?
+  - Development Workflow
+  - Staging Workflow
+
+--
+
+##### (3) Next Steps
+
+---
+
+## Part 1
+
+yay
+
+---
+
+## About Caleb
+
+- Add some stuff
+
+---
+
+## Objectives
+
+By the end of this talk you should be able to:
+
+1. Describe something
+1. Set up something
+1. Do something
+1. Add something
+
+---
+
+### Blah
+
+Add some stuff
+
+---
+
+### Blah 2
+
+Add some more stuff
+
+---
+
+### Blah 3
+
+Add even some more stuff
+
+---
+
+### Blah with a vengence
+
+Add some stuff until there's nothing else to add
+
+---
+
+## Part 2
+
+yay
+
+---
+
+## About Michael
+
+```
+$ whoami
+michael.herman
+```
+--
+
+#### Day Job:
+
+[Galvanize](http://www.galvanize.com/) (since May 2015)...
+
+1. ~~Lead Instructor Full Stack~~
+1. ~~Curriculum Developer~~
+1. Senior Software Engineer
+
+--
+
+#### Also:
+
+1. Co-founder/author of [Real Python](https://realpython.com)
+1. 😍 - [tech writing](http://mherman.org), [open source](http://github.com/mjhea0), [financial models](http://www.starterfinancialmodel.com/), [radiohead](http://radiohead.com/), [chilling](images/me.jpg)
+
+---
+
+## Objectives
+
+By the end of this talk you should be able to:
+
+1. Work with React running inside a Docker Container
+1. Describe something
+1. Set up something
+1. Do something
+1. Add something
+
+---
+
+## Why Docker?
+
+*Often, when developing applications with a microservice architecture, you cannot fully test out all services until you deploy to a staging server. This takes much too long to get feedback. Docker helps to speed up this process by making it easier to link together small, independent services locally.*
+
+In this talk, we'll look at a development workflow to manage a React app running in a Docker container within a larger set of services.
+
+Want to see some bigger examples?
+
+1. [Developing Microservices - Node, React, and Docker](http://mherman.org/blog/2017/05/11/developing-microservices-node-react-docker)
+1. [Microservices with Docker, Flask, and React](http://testdriven.io/)
+
+---
+
+### Development Workflow (part 1)
+
+Add a *Dockerfile* to the project root...
+
+```yaml
+FROM node:latest
+
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+ADD package.json /usr/src/app/package.json
+RUN npm install
+RUN npm install react-scripts@0.9.5 -g
+
+# add app
+ADD . /usr/src/app
+
+# start app
+CMD ["npm", "start"]
+```
+
+Build the image, and then spin up the container:
+
+```sh
+$ docker build -t "react-denver"
+$ docker run -d -p 3333:3000 react-denver
+```
+
+
+---
+
+### Development Workflow (part 2)
+
+
+Build Context
+
+---
+
+### Development Workflow (part 3)
+
+
+Simplify with Docker Compose
+
+---
+
+### Staging Workflow (part 1)
+
+Create build
+
+---
+
+### Staging Workflow (part 2)
+
+Add environment varibles
+
+---
+
+## Next Steps
+
+That's it! What's next?
+
+1. Add some stuff!
+
+Questions?
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
