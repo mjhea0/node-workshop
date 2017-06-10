@@ -47,13 +47,11 @@ class: center, middle
 
 --
 
-##### (1) Part 1 - react app overview
+##### (1) Part 1 - Inherited Jank
   - About Caleb
   - Objectives
-  - blah
-  - blah 2
-  - blah 3
-  - blah with a vengence
+  - Problems
+  - Solutions
 
 --
 
@@ -70,56 +68,238 @@ class: center, middle
 
 ---
 
-## Part 1
+### About Caleb:
 
-yay
+<img src="./images/caleb_art.png" alt="uh oh" style="width:50%;"/>
+#### Front End Developer
 
----
-
-## About Caleb
-
-- Add some stuff
+#### Visual Artist
 
 ---
+## Inherited Jank
 
-## Objectives
+### Objectives:
 
 By the end of this talk you should be able to:
 
-1. Describe something
-1. Set up something
-1. Do something
-1. Add something
+1. Know when React component re-rendering causes jank.
+
+1. Look for a solution.
+
+1. Implement a solution.
 
 ---
 
-### Blah
-
-Add some stuff
-
----
-
-### Blah 2
-
-Add some more stuff
+### App Component View:
+Parent Component is "Grid Container".
+<img src="./images/react_talk.svg" alt="broken?" style="width:100%;">
 
 ---
 
-### Blah 3
+### Problems:
 
-Add even some more stuff
+1. Each time a scroll event was initiated on a child component, the parent component must render all child components.
+
+1. With 30 rows and 30 columns as an example, 960 virtual dom nodes must be rendered. As scrolling happens MANY times per second, this becomes extremely expensive.
+
+3. JANK!
+
+---
+### Attempted Solutions:
+
+#### Using lodash.throttle in parent component constructor:
+
+```js
+import _ from lodash;
+
+class GridContainer extende Component {constructor(props) {
+  super(props);
+
+  this.verticalScroll = _.throttle(this.verticalScroll.bind(this), 10);
+  this.horizontalScroll = _.throttle(this.horizontalScroll.bind(this), 10);
+  }
+}
+
+```
+---
+### Attempted Solutions (continued):
+
+#### Using react-throttle package in child component elements:
+
+```js
+import {Throttle} from 'react-throttle';
+
+class GridBody extends Component {
+  ...
+  render() {
+    <Throttle
+      time="10"
+      handler="onScroll"
+    >
+      <div
+        className="x-headers-container"
+        ref={(c) => { this.position = c; }}
+        onScroll={this.handleScroll}
+      >
+        <div className="x-headers-subcontainer">
+          {HeaderList}
+        </div>
+      </div>
+    </Throttle>
+  }
+}
+
+```
+---
+
+### Attempted Solutions (continued):
+
+#### Using setTimeout in parent component constructor:
+```js
+class GridContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.verticalScroll = setTimeout(this.verticalScroll.bind(this), 10);
+    this.horizontalScroll = setTimeout(this.horizontalScroll.bind(this), 10);
+  }
+  ...
+}
+```
+---
+
+### Working solution:
+
+#### Using a stuttered shallow check in parent component functions:
+```js
+class GridContainer extends Component {
+  ...
+  verticalScroll(scrollTop) {
+    let diff = scrollTop - this.state.scrollTop;
+    if (diff > 3 || diff < -3) {
+      this.setState({scrollTop});
+    }
+  }
+}
+```
+--
+
+#### Three is the magic number.
 
 ---
 
-### Blah with a vengence
+### Watch those keys!
 
-Add some stuff until there's nothing else to add
+#### Initially keys were created in the child components using Universal Unique ID's:
+
+```js
+import uuid from 'uuid';
+
+class ColumnHeadersContainer extends Component {
+  ...
+  render() {
+    let {columns} = this.props;
+
+    const HeaderList = columns.map((column) => {
+      return (
+        <GridItem
+          key={uuid.v4()}
+          type={column}
+        />
+      );
+    });
+  }
+}
+```
 
 ---
 
-## Part 2
+### Set static keys in parent component, then pass as props to children:
 
-yay
+```js
+import uuid from 'uuid';
+
+class GridContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rows: 30,
+      columns: 30,
+      columnKeys: []
+    }
+  }
+
+  componentWillMount() {
+    let {rows, columns} = this.state;
+
+    this.generateKeys(rows, columns);
+  }
+
+  generateKeys(rows, columns) {
+    let columnKeys = [];
+
+    this.generateLoop(columnKeys, columns);
+
+    this.setState({
+      columnKeys: columnKeys
+    });
+  }
+
+```
+
+---
+
+### Create keys in parent component and pass as props to children (continued):
+
+```js
+  generateLoop(output, input, input2 = 1) {
+    for (var i = 0; i < (input * input2); i ++) {
+      let key = uuid.v4();
+      output.push(key);
+    };
+    return output;
+  }
+
+  render() {
+    let {columnKeys} = this.state;
+
+    return (
+      <div className="main-grid-container">
+        <ColumnHeadersContainer
+          columnKeys={columnKeys}
+          horizontalScroll={this.horizontalScroll}
+          scrollLeft={scrollLeft}
+        />
+      </div>
+    );
+  }
+}
+```
+
+---
+
+## And we're done!
+
+<img src="./images/angry_cat.png" alt="that cat ain't happy" style="width:50%;">
+
+(This is the cat I live with.)
+
+---
+
+## Find me at:
+
+#### Github:
+
+### https://github.com/calebpollman/
+
+#### or email:
+
+### cpollman1@gmail.com
+
+#### This repo:
+
+### https://github.com/calebpollman/react-synchronized-scrolling
 
 ---
 
@@ -165,11 +345,7 @@ By the end of this talk you should be able to:
 
 *Often, when developing applications with a microservice architecture, you cannot fully test out all services until you deploy to a staging server. This takes much too long to get feedback. Docker helps to speed up this process by making it easier to link together small, independent services locally.*
 
---
-
 In this talk, we'll look at a development workflow to manage a React app running in a Docker container within a larger set of services.
-
---
 
 Want to see some bigger examples?
 
@@ -302,152 +478,15 @@ Test auto reload! Make a change to the code and watch it update in the browser..
 
 ---
 
-### Development Workflow (part 4)
-
-You can dynamically add [environment variables](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables) to [Create React App](https://github.com/facebookincubator/create-react-app) by prefixing them with `REACT_APP_`.
-
---
-
-Add a `console.log` to the *App.js*:
-
-```javascript
-console.log(process.env)
-```
-
---
-
-Add the variable to your compose file:
-
-```yaml
-environment:
-  - NODE_ENV=development
-  - REACT_APP_TEST=yoyo
-```
-
---
-
-Update the container:
-
-```sh
-$ docker-compose up -d
-```
-
---
-
-Wait. This added the variables at run time. What issues will we have if we create a build?
-
----
-
-
 ### Staging Workflow (part 1)
 
-Since env variables are added during the build, we need to make some changes. Add a *Dockerfile-stage* to the project root:
-
-```yaml
-FROM node:latest
-
-# set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
-
-# add environment variables
-ARG REACT_APP_TEST
-ENV REACT_APP_TEST=$REACT_APP_TEST
-
-# install and cache app dependencies
-ADD package.json /usr/src/app/package.json
-RUN npm install && npm install pushstate-server -g
-
-# add app
-ADD . /usr/src/app
-
-# build react app
-RUN npm run build
-
-# start app
-CMD ["pushstate-server", "build"]
-```
-
----
-
-### Staging Workflow (part 1, continued...)
-
-Add a *docker-compose-stage.yml* file to the project root:
-
-```yaml
-version: "2.1"
-
-services:
-
-  react-service:
-    container_name: react-service-stage
-    build:
-      context: ./
-      dockerfile: Dockerfile-stage
-      args:
-        - REACT_APP_TEST=yoyo
-    ports:
-      - '3337:9000' # expose ports - HOST:CONTAINER
-```
-
---
-
-So-
-
-- `args` are added during the Docker image build, which we grab (`ARG REACT_APP_TEST`) and then set as an env variable (`ENV REACT_APP_TEST=$REACT_APP_TEST`)
-
---
-
-Wait. Why did we remove the volume?
-
----
-
-### Staging Workflow (part 1, continued...)
-
-Remove the `console log` and add the following to the `render()`:
-
-```javascript
-<p>{process.env.REACT_APP_TEST}</p>
-```
-
---
-
-Bring down the dev container:
-
-```sh
-$ docker-compose down
-```
-
---
-
-Build the image and spin up the staging container:
-
-```sh
-$ docker-compose -f docker-compose-stage.yml up -d --build
-```
---
-
-Test - [http://localhost:3337](http://localhost:3337)
-
-<br><br>
-
-<div style="text-align:center;">
-  <img src="images/react-heart.svg" alt="react logo with a heart" style="width:40px">
-</div>
+Create build
 
 ---
 
 ### Staging Workflow (part 2)
 
-What else would you like to see?
-
-1. Change build context to GitHub repo
-1. Deploy to EC2 and/or Digital Ocean
-1. Debugging dev app with Docker Logs
-1. Dance, Dance, Dance!
+Add environment varibles
 
 ---
 
@@ -456,19 +495,8 @@ What else would you like to see?
 That's it! What's next?
 
 1. Add some stuff!
-1. Add some more stuff!
-1. Add like even more freaking stuff, you know?
-
---
 
 Questions?
-
---
-
-Send us money:
-
-1. michael@mherman.org
-1. caleb@yobigjohnstuff.com
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
