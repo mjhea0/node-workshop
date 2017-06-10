@@ -45,17 +45,15 @@ class: center, middle
 
 --
 
---
-
-##### (1) Part 1 - Inherited Jank
+##### (1) Part 1 - inherited jank
   - About Caleb
-  - Objectives
+  - Inherited Jank
   - Problems
   - Solutions
 
 --
 
-##### (2) Part 2 - docker workflow
+##### (2) Part 2 - docker workflow (ready to dock<span style="font-size: 25px;">🤘</span>?!)
   - About Michael
   - Objectives
   - Why Docker?
@@ -72,61 +70,55 @@ class: center, middle
 
 <img src="./images/caleb_art.png" alt="uh oh" style="width:50%;"/>
 #### Front End Developer
-
 #### Visual Artist
 
 ---
+
 ## Inherited Jank
 
-### Objectives:
+What does this app do?
 
-By the end of this talk you should be able to:
-
-1. Know when React component re-rendering causes jank.
-
-1. Look for a solution.
-
-1. Implement a solution.
-
----
+--
 
 ### App Component View:
-Parent Component is "Grid Container".
-<img src="./images/react_talk.svg" alt="broken?" style="width:100%;">
+
+Parent Component is the "Grid Container"...
+
+<img src="./images/react_talk.svg" alt="react components" style="width:100%;">
 
 ---
 
-### Problems:
+## Problems
 
-1. Each time a scroll event was initiated on a child component, the parent component must render all child components.
-
-1. With 30 rows and 30 columns as an example, 960 virtual dom nodes must be rendered. As scrolling happens MANY times per second, this becomes extremely expensive.
-
-3. JANK!
+1. Each time a scroll event was initiated on a child component, the parent component must (re)render all child components.
+1. With 30 rows and 30 columns as an example, 960 virtual dom nodes must be (re)rendered. As scrolling happens MANY times per second, this becomes extremely expensive.
+1. JANK!
 
 ---
-### Attempted Solutions:
 
-#### Using lodash.throttle in parent component constructor:
+## Attempted Solution 1
 
-```js
+#### `lodash.throttle` in parent component constructor:
+
+```javascipt
 import _ from lodash;
 
-class GridContainer extende Component {constructor(props) {
+class GridContainer extends Component {constructor(props) {
   super(props);
 
   this.verticalScroll = _.throttle(this.verticalScroll.bind(this), 10);
   this.horizontalScroll = _.throttle(this.horizontalScroll.bind(this), 10);
   }
 }
-
 ```
+
 ---
-### Attempted Solutions (continued):
 
-#### Using react-throttle package in child component elements:
+## Attempted Solution 2
 
-```js
+#### `react-throttle` package in child component elements:
+
+```javascipt
 import {Throttle} from 'react-throttle';
 
 class GridBody extends Component {
@@ -148,30 +140,32 @@ class GridBody extends Component {
     </Throttle>
   }
 }
-
 ```
+
 ---
 
-### Attempted Solutions (continued):
+## Attempted Solution 3
 
-#### Using setTimeout in parent component constructor:
-```js
+#### `setTimeout` in parent component constructor:
+
+```javascipt
 class GridContainer extends Component {
   constructor(props) {
     super(props);
-
     this.verticalScroll = setTimeout(this.verticalScroll.bind(this), 10);
     this.horizontalScroll = setTimeout(this.horizontalScroll.bind(this), 10);
   }
   ...
 }
 ```
+
 ---
 
-### Working solution:
+## Working Solution!
 
-#### Using a stuttered shallow check in parent component functions:
-```js
+#### stuttered shallow check in parent component functions:
+
+```javascript
 class GridContainer extends Component {
   ...
   verticalScroll(scrollTop) {
@@ -182,17 +176,18 @@ class GridContainer extends Component {
   }
 }
 ```
+
 --
 
-#### Three is the magic number.
+Three is the magic number.
 
 ---
 
-### Watch those keys!
+## Watch those keys!
 
-#### Initially keys were created in the child components using Universal Unique ID's:
+Initially keys were created in the child components using Universal Unique ID's:
 
-```js
+```javascipt
 import uuid from 'uuid';
 
 class ColumnHeadersContainer extends Component {
@@ -214,15 +209,16 @@ class ColumnHeadersContainer extends Component {
 
 ---
 
-### Set static keys in parent component, then pass as props to children:
+## Solution
 
-```js
+#### Set static keys in parent component, then pass as props to children:
+
+```javascript
 import uuid from 'uuid';
 
 class GridContainer extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       rows: 30,
       columns: 30,
@@ -232,49 +228,16 @@ class GridContainer extends Component {
 
   componentWillMount() {
     let {rows, columns} = this.state;
-
     this.generateKeys(rows, columns);
   }
 
   generateKeys(rows, columns) {
     let columnKeys = [];
-
     this.generateLoop(columnKeys, columns);
-
     this.setState({
       columnKeys: columnKeys
     });
   }
-
-```
-
----
-
-### Create keys in parent component and pass as props to children (continued):
-
-```js
-  generateLoop(output, input, input2 = 1) {
-    for (var i = 0; i < (input * input2); i ++) {
-      let key = uuid.v4();
-      output.push(key);
-    };
-    return output;
-  }
-
-  render() {
-    let {columnKeys} = this.state;
-
-    return (
-      <div className="main-grid-container">
-        <ColumnHeadersContainer
-          columnKeys={columnKeys}
-          horizontalScroll={this.horizontalScroll}
-          scrollLeft={scrollLeft}
-        />
-      </div>
-    );
-  }
-}
 ```
 
 ---
@@ -287,13 +250,13 @@ class GridContainer extends Component {
 
 ---
 
-## Find me at:
+## Find me!
 
-#### Github:
+#### GitHub:
 
 ### https://github.com/calebpollman/
 
-#### or email:
+#### Or email:
 
 ### cpollman1@gmail.com
 
