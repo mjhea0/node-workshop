@@ -335,7 +335,11 @@ By the end of this talk you should be able to:
 
 *Often, when developing applications with a microservice architecture, you cannot fully test out all services until you deploy to a staging server. This takes much too long to get feedback. Docker helps to speed up this process by making it easier to link together small, independent services locally.*
 
+--
+
 In this talk, we'll look at a development workflow to manage a React app running in a Docker container within a larger set of services.
+
+--
 
 Want to see some bigger examples?
 
@@ -468,15 +472,152 @@ Test auto reload! Make a change to the code and watch it update in the browser..
 
 ---
 
+### Development Workflow (part 4)
+
+You can dynamically add [environment variables](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables) to [Create React App](https://github.com/facebookincubator/create-react-app) by prefixing them with `REACT_APP_`.
+
+--
+
+Add a `console.log` to the *App.js*:
+
+```javascript
+console.log(process.env)
+```
+
+--
+
+Add the variable to your compose file:
+
+```yaml
+environment:
+  - NODE_ENV=development
+  - REACT_APP_TEST=yoyo
+```
+
+--
+
+Update the container:
+
+```sh
+$ docker-compose up -d
+```
+
+--
+
+Wait. This added the variables at run time. What issues will we have if we create a build?
+
+---
+
+
 ### Staging Workflow (part 1)
 
-Create build
+Since env variables are added during the build, we need to make some changes. Add a *Dockerfile-stage* to the project root:
+
+```yaml
+FROM node:latest
+
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# add environment variables
+ARG REACT_APP_TEST
+ENV REACT_APP_TEST=$REACT_APP_TEST
+
+# install and cache app dependencies
+ADD package.json /usr/src/app/package.json
+RUN npm install && npm install pushstate-server -g
+
+# add app
+ADD . /usr/src/app
+
+# build react app
+RUN npm run build
+
+# start app
+CMD ["pushstate-server", "build"]
+```
+
+---
+
+### Staging Workflow (part 1, continued...)
+
+Add a *docker-compose-stage.yml* file to the project root:
+
+```yaml
+version: "2.1"
+
+services:
+
+  react-service:
+    container_name: react-service-stage
+    build:
+      context: ./
+      dockerfile: Dockerfile-stage
+      args:
+        - REACT_APP_TEST=yoyo
+    ports:
+      - '3337:9000' # expose ports - HOST:CONTAINER
+```
+
+--
+
+So-
+
+- `args` are added during the Docker image build, which we grab (`ARG REACT_APP_TEST`) and then set as an env variable (`ENV REACT_APP_TEST=$REACT_APP_TEST`)
+
+--
+
+Wait. Why did we remove the volume?
+
+---
+
+### Staging Workflow (part 1, continued...)
+
+Remove the `console log` and add the following to the `render()`:
+
+```javascript
+<p>{process.env.REACT_APP_TEST}</p>
+```
+
+--
+
+Bring down the dev container:
+
+```sh
+$ docker-compose down
+```
+
+--
+
+Build the image and spin up the staging container:
+
+```sh
+$ docker-compose -f docker-compose-stage.yml up -d --build
+```
+--
+
+Test - [http://localhost:3337](http://localhost:3337)
+
+<br><br>
+
+<div style="text-align:center;">
+  <img src="images/react-heart.svg" alt="react logo with a heart" style="width:40px">
+</div>
 
 ---
 
 ### Staging Workflow (part 2)
 
-Add environment varibles
+What else would you like to see?
+
+1. Change build context to GitHub repo
+1. Deploy to EC2 and/or Digital Ocean
+1. Debugging dev app with Docker Logs
+1. Dance, Dance, Dance!
 
 ---
 
@@ -485,8 +626,19 @@ Add environment varibles
 That's it! What's next?
 
 1. Add some stuff!
+1. Add some more stuff!
+1. Add like even more freaking stuff, you know?
+
+--
 
 Questions?
+
+--
+
+Send us money:
+
+1. michael@mherman.org
+1. caleb@yobigjohnstuff.com
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
