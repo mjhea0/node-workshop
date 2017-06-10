@@ -76,50 +76,220 @@ yay
 
 ---
 
-## About Caleb
+### About Caleb:
 
-- Add some stuff
+<img src="./images/caleb_art.png" alt="uh oh" style="width:50%;"/>
+#### Front End Developer
+
+#### Visual Artist
 
 ---
 
-## Objectives
+### Objectives:
 
 By the end of this talk you should be able to:
 
-1. Describe something
-1. Set up something
-1. Do something
-1. Add something
+1. Know when React component re-rendering causes jank.
+
+1. Look for a solution.
+
+1. Implement a solution.
 
 ---
 
-### Blah
-
-Add some stuff
-
----
-
-### Blah 2
-
-Add some more stuff
+### App Component View:
+Parent Component is "Grid Container".
+<img src="./images/react_talk.svg" alt="broken?" style="width:100%;">
 
 ---
 
-### Blah 3
+### Problems:
 
-Add even some more stuff
+1. Each time a scroll event was initiated on a child component, the parent component must render all child components.
+
+1. With 30 rows and 30 columns as an example, 960 virtual dom nodes must be rendered. As scrolling happens MANY times per second, this becomes extremely expensive.
+
+3. JANK!
+
+---
+### Attempted Solutions:
+
+#### Using lodash.throttle in parent component constructor:
+
+```js
+import _ from lodash;
+
+class GridContainer extende Component {constructor(props) {
+  super(props);
+
+  this.verticalScroll = _.throttle(this.verticalScroll.bind(this), 10);
+  this.horizontalScroll = _.throttle(this.horizontalScroll.bind(this), 10);
+  }
+}
+
+```
+---
+### Attempted Solutions (continued):
+
+#### Using react-throttle package in child component elements:
+
+```js
+import {Throttle} from 'react-throttle';
+
+<Throttle
+  time="10"
+  handler="onScroll"
+>
+  <div
+    className="x-headers-container"
+    ref={(c) => { this.position = c; }}
+    onScroll={this.handleScroll}
+  >
+    <div className="x-headers-subcontainer">
+      {HeaderList}
+    </div>
+  </div>
+</Throttle>
+
+```
+---
+
+### Attempted Solutions (continued):
+
+#### Using setTimeout in parent component constructor:
+```js
+class GridContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.verticalScroll = setTimeout(this.verticalScroll.bind(this), 10);
+    this.horizontalScroll = setTimeout(this.horizontalScroll.bind(this), 10);
+  }
+}
+```
+---
+
+### Working solution:
+
+#### Using a stuttered shallow check in parent component functions:
+```js
+verticalScroll(scrollTop) {
+  let diff = scrollTop - this.state.scrollTop;
+  if (diff > 3 || diff < -3) {
+    this.setState({scrollTop});
+  }
+}
+```
 
 ---
 
-### Blah with a vengence
+### Watch those keys!
 
-Add some stuff until there's nothing else to add
+#### Initially keys were created in the child components using Universal Unique ID's:
+
+```js
+import uuid from 'uuid';
+
+class ColumnHeadersContainer extends Component {
+  ...
+  render() {
+    let {columns} = this.props;
+
+    const HeaderList = columns.map((column) => {
+      return (
+        <GridItem
+          key={uuid.v4()}
+          type={column}
+        />
+      );
+    });
+    ...
+  }
+}
+```
 
 ---
 
-## Part 2
+### Set static keys in parent component, then pass as props to child components:
 
-yay
+```js
+import uuid from 'uuid';
+
+class GridContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rows: 30,
+      columns: 30,
+      columnKeys: []
+    }
+  }
+
+  componentWillMount() {
+    let {rows, columns} = this.state;
+
+    this.generateKeys(rows, columns);
+  }
+
+  generateKeys(rows, columns) {
+    let columnKeys = [];
+
+    this.generateLoop(columnKeys, columns);
+
+    this.setState({
+      columnKeys: columnKeys
+    });
+  }
+
+```
+
+---
+
+### Create keys in parent component and pass as props to child element (continued):
+
+```js
+  generateLoop(output, input, input2 = 1) {
+    for (var i = 0; i < (input * input2); i ++) {
+      let key = uuid.v4();
+      output.push(key);
+    };
+    return output;
+  }
+
+  render() {
+    let {columnKeys} = this.state;
+
+    return (
+      <div className="main-grid-container">
+        <ColumnHeadersContainer
+          columnKeys={columnKeys}
+          horizontalScroll={this.horizontalScroll}
+          scrollLeft={scrollLeft}
+        />
+      </div>
+    );
+  }
+}
+```
+
+---
+
+## And we're done!
+
+<img src="./images/angry_cat.png" alt="that cat ain't happy" style="width:50%;">
+
+---
+
+## Find me at:
+
+#### Github:
+
+### https://github.com/calebpollman/
+
+#### or email:
+
+### cpollman1@gmail.com
 
 ---
 
