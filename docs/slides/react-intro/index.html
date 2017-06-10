@@ -101,324 +101,430 @@ michael.herman
 
 By the end of this talk you should be able to:
 
-1. Work with React running inside a Docker Container
-1. Simply your development workflow with Docker Compose
-1. Pass environment variables to a Docker image at build time
-1. Utilize volumes to mount your code into a container
-1. Do something
-1. Add something
+1. Explain what React is
+1. Create a SPA with React components
+1. Use props and state appropriately
+1. Manage the state of a React component via component lifecycle methods
+1. Make API calls to an Express backend
 
 ---
 
-## Why Docker?
+## What is React?
 
-*Often, when developing applications with a microservice architecture, you cannot fully test out all services until you deploy to a staging server. This takes much too long to get feedback. Docker helps to speed up this process by making it easier to link together small, independent services locally.*
+What is it? How does it compare to Angular?
 
---
-
-In this talk, we'll look at a development workflow to manage a React app running in a Docker container within a larger set of services.
-
---
-
-Want to see some bigger examples?
-
-1. [Developing Microservices - Node, React, and Docker](http://mherman.org/blog/2017/05/11/developing-microservices-node-react-docker)
-1. [Microservices with Docker, Flask, and React](http://testdriven.io/)
+https://facebook.github.io/react/tutorial/tutorial.html#what-is-react
 
 ---
 
-### Development Workflow (part 1)
+## Why use React?
 
-Add a *Dockerfile* to the project root:
-
-```yaml
-FROM node:latest
-
-# set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
-
-# install and cache app dependencies
-ADD package.json /usr/src/app/package.json
-RUN npm install
-RUN npm install react-scripts@0.9.5 -g
-
-# add app
-ADD . /usr/src/app
-
-# start app
-CMD ["npm", "start"]
-```
-
---
-
-Be sure to take advantage of Docker's layered cache system, to speed up build times, by adding the *package.json* and installing the dependencies **before** adding the app's source files. For more on this, check out [Building Efficient Dockerfiles - Node.js](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/).
+1. Flexible
+1. Fast ([virtual dom](https://medium.com/@gethylgeorge/how-virtual-dom-and-diffing-works-in-react-6fc805f9f84e)!)
+1. Component-based (*think in terms of components rather than templates*)
+1. Declarative
+1. Simple error handling (with *create react app*)
+1. Strong community
 
 ---
 
-### Development Workflow (part 1, continued...)
+## Express Server-side Setup
 
-Build the image, and then spin up the container in [detached](https://docs.docker.com/engine/reference/run/#detached--d) mode:
+1. Clone repo and install dependencies
+
+  ```sh
+  $ git clone https://github.com/mjhea0/node-workshop.git
+  $ cd w2/exercises/node-jobs-api
+  $ npm install
+  ```
+
+1. Create postgres databases - `node_jobs_dev` and `node_jobs_test`
+
+  > **NOTE:** You may need to update the connection strings within the *knexfile.js* if your databases have usernames and/or passwords.
+
+1. Apply migrations and seed the db
+
+  ```sh
+  $ knex migrate:latest --env development
+  $ knex seed:run --env development
+  ```
+
+1. Run the darn app
+
+  ```sh
+  gulp
+  ```
+
+1. Test @ http://localhost:8080/api/v1/jobs
+
+---
+
+## Project Setup
+
+[Create React App](https://github.com/facebookincubator/create-react-app)
+
+Install
 
 ```sh
-$ docker build -t "react-denver"
-$ docker run -d -p 3333:3000 react-denver
+$ npm install -g create-react-app@1.3.0
 ```
 
---
-
-Once spun up, the app will be available on port `3333` on the host machine and on port `3000` for other Docker services.
-
---
-
-Test - [http://localhost:3333](http://localhost:3333)
-
---
-
-Other commands:
-
-1. `docker ps` - view currenly running docker process
-1. `docker images` view built images
-1. `docker help` - sweet goodness!
-
----
-
-### Development Workflow (part 2)
-
-
-Simplify your workflow with [Docker Compose](https://docs.docker.com/compose/). Add a *docker-compose.yml* file to the project root:
-
-```yaml
-version: "2.1"
-
-services:
-
-  react-service:
-    container_name: react-service
-    build: ./
-    ports:
-      - '3337:3000' # expose ports - HOST:CONTAINER
-    environment:
-      - NODE_ENV=development
-```
-
---
-
-Running a number of microservices locally each within a different project repo? Docker Compose helps to link them together, making it feel almost as easy as running a monolith with a single run command:
+Quick start
 
 ```sh
-$ docker-compose up -d --build
+$ create-react-app node-jobs-react
+$ cd node-jobs-react
+$ npm start
 ```
 
 --
 
-Test - [http://localhost:3337](http://localhost:3337)
+Why Create React App?
+
+--
+
+1. You get a nice boilerplate all set up and ready to go.
+1. You do not have to configure Webpack and Babel to get your app going.
+1. You get sane errors messages.
+
+--
+
+<small>Make sure you understand what's happening beneath the scenes with webpack and babel. For more, check out [React Intro](https://github.com/mjhea0/react-intro).</small>
 
 ---
 
-### Development Workflow (part 3)
-
-Add a [volume](https://docs.docker.com/engine/tutorials/dockervolumes/) instruction to the Compose file:
-
-```yaml
-volumes:
-  - './:/usr/src/app'
-  - '/usr/src/app/node_modules'
-```
-
---
-
-Volumes are used to mount a directory inside a container so that you can make modifications to the code *without* having to rebuild the image. This should be a default in your local development environment so you quickly get feedback on code changes.
-
---
-
-To prevent the volume - `/usr/src/app` - from overriding the *node_modules*, we used a data volume - `/usr/src/app/node_modules`. This may or may not be necessary, depending on the order in which you set up your image and containers. Check out [Getting npm packages to be installed with docker-compose](http://dchua.com/2016/02/07/getting-npm-packages-to-be-installed-with-docker-compose/) for more.
-
---
-
-Update the container:
+## Structure
 
 ```sh
-$ docker-compose up -d
+$ tree -I node_modules
 ```
 
---
+Navigate through the "src" folder. What's happening with each one of these files?
 
-Test auto reload! Make a change to the code and watch it update in the browser...
+1. *App.css*
+1. *App.js*
+1. *App.test.js*
+1. *index.css*
+1. *index.js*
+
+Take a look at the *package.json*. What do each of these commands do?
+
+1. "start": "react-scripts start",
+1. "build": "react-scripts build",
+1. "test": "react-scripts test --env=jsdom",
+1. "eject": "react-scripts eject"
 
 ---
 
-### Development Workflow (part 4)
+## New Project
 
-You can dynamically add [environment variables](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables) to [Create React App](https://github.com/facebookincubator/create-react-app) by prefixing them with `REACT_APP_`.
-
---
-
-Add a `console.log` to the *App.js*:
+Remove the *App.css*, *App.js*, *App.test.js*, *index.css* and then update *index.js*:
 
 ```javascript
-console.log(process.env)
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const App = () => {
+  return (
+    <div className="container">
+      <h1>Node Jobs</h1>
+    </div>
+  )
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
 ```
 
 --
 
-Add the variable to your compose file:
-
-```yaml
-environment:
-  - NODE_ENV=development
-  - REACT_APP_TEST=yoyo
-```
+What's happening?
 
 --
 
-Update the container:
-
-```sh
-$ docker-compose up -d
-```
+1. We created a functional component called `App`, which returns JSX
+1. We then use `render()` to mount the `App` to the DOM
 
 --
 
-Wait. This added the variables at run time. What issues will we have if we create a build?
+Why is `className` in camelCase?
 
 ---
 
+## Class-based Component
 
-### Staging Workflow (part 1)
-
-Since env variables are added during the build, we need to make some changes. Add a *Dockerfile-stage* to the project root:
-
-```yaml
-FROM node:latest
-
-# set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
-
-# add environment variables
-ARG REACT_APP_TEST
-ENV REACT_APP_TEST=$REACT_APP_TEST
-
-# install and cache app dependencies
-ADD package.json /usr/src/app/package.json
-RUN npm install && npm install pushstate-server -g
-
-# add app
-ADD . /usr/src/app
-
-# build react app
-RUN npm run build
-
-# start app
-CMD ["pushstate-server", "build"]
-```
-
----
-
-### Staging Workflow (part 1, continued...)
-
-Add a *docker-compose-stage.yml* file to the project root:
-
-```yaml
-version: "2.1"
-
-services:
-
-  react-service:
-    container_name: react-service-stage
-    build:
-      context: ./
-      dockerfile: Dockerfile-stage
-      args:
-        - REACT_APP_TEST=yoyo
-    ports:
-      - '3337:9000' # expose ports - HOST:CONTAINER
-```
-
---
-
-So-
-
-- `args` are added during the Docker image build, which we grab (`ARG REACT_APP_TEST`) and then set as an env variable (`ENV REACT_APP_TEST=$REACT_APP_TEST`)
-
---
-
-Wait. Why did we remove the volume?
-
----
-
-### Staging Workflow (part 1, continued...)
-
-Remove the `console log` and add the following to the `render()`:
+Update *index.js*:
 
 ```javascript
-<p>{process.env.REACT_APP_TEST}</p>
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+class App extends Component {
+  constructor() {
+    super()
+  }
+  render() {
+    return (
+      <div className="container"><h1>Node Jobs</h1></div>
+    )
+  }
+}
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
 ```
 
 --
 
-Bring down the dev container:
+What's happening?
 
-```sh
-$ docker-compose down
+--
+
+1. `constructor` - runs automatically when an instance is created (but when is the instance created?)
+1. `super()` calls constructor of `Component`, which `App` extends from
+
+---
+
+## AJAX (part 1)
+
+Add a `getJobs()` method:
+
+```javascript
+getJobs() {
+  axios.get(`http://localhost:8080/api/v1/jobs`)
+  .then((res) => { console.log(res); })
+  .catch((err) => { console.log(err); })
+}
+```
+
+Don't forget the import:
+
+```javascript
+import axios from 'axios';
+```
+
+Be sure to NPM install axios!
+
+---
+
+## AJAX (part 2)
+
+Call the method in the constructor to test:
+
+```javascript
+constructor() {
+  super()
+  this.getJobs()
+}
 ```
 
 --
 
-Build the image and spin up the staging container:
+Why should you *not* call the method in the constructor?
 
-```sh
-$ docker-compose -f docker-compose-stage.yml up -d --build
-```
---
+---
 
-Test - [http://localhost:3337](http://localhost:3337)
+## Component Lifecycle Methods (part 1)
 
-<br><br>
+Resources:
+
+- https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle
+- https://alligator.io/react/lifecycle-functions/
 
 <div style="text-align:center;">
-  <img src="images/react-heart.svg" alt="react logo with a heart" style="width:40px">
+  <img src="images/lifecycle.png" style="max-width: 65%; border:0; box-shadow: none;" alt="Component Lifecycle Methods">
 </div>
 
----
-
-### Staging Workflow (part 2)
-
-What else would you like to see?
-
-1. Change build context to GitHub repo
-1. Deploy to EC2 and/or Digital Ocean
-1. Debugging dev app with Docker Logs
-1. Dance, Dance, Dance!
+<small>(Image source: http://aaronice.github.io/2015/12/15/react-study/)</small>
 
 ---
 
-## Next Steps
+## Component Lifecycle Methods (part 2)
 
-That's it! What's next?
-
-1. Add some stuff!
-1. Add some more stuff!
-1. Add like even more freaking stuff, you know?
+Where should AJAX calls happen?
 
 --
+
+`componentDidMount()` - [why](https://daveceddia.com/where-fetch-data-componentwillmount-vs-componentdidmount/)?
+
+--
+
+<p>Update:</p>
+
+```javascript
+componentDidMount() {
+  this.getJobs();
+}
+```
+
+---
+
+## `setState()` (part 1)
+
+Update `getJobs()`:
+
+```javascript
+getJobs() {
+  axios.get(`http://localhost:8080/api/v1/jobs`)
+  .then((res) => { this.setState({ jobs: res.data.data }); })
+  .catch((err) => { console.log(err); })
+}
+```
+
+Add state to the constructor:
+
+```javascript
+this.state = {
+  jobs: []
+}
+```
+
+--
+
+What's happening?
+
+--
+
+1. `this.state` adds `state` property and sets `jobs` to an empty array. Why set an initial state of an empty array?
+1. `setState()` async function to update state (state is immutable)
+
+---
+
+## `setState()` (part 2)
+
+Update the `render()` method:
+
+```javascript
+render() {
+  return (
+    <div className="container">
+      <h1>Node Jobs</h1>
+      <ul>
+        {
+          this.state.jobs.map((job) => {
+            return <li key={ job.id }>{ job.title }</li>
+          })
+        }
+      </ul>
+    </div>
+  )
+}
+```
+
+--
+
+What's happening?
+
+--
+
+1. Iterated over the jobs (from the AJAX request) and created a new element. This is why we needed to set an initial state - it prevents `map` from exploding.
+1. `key`? - used by React to keep track of each element
+
+---
+
+## Functional Component (part 1)
+
+Let's create a new component for the job list. Add a new folder called "components" to "src". Add a new file to that folder called *JobList.jsx*:
+
+```javascript
+import React from 'react';
+
+const JobList = (props) => {
+  return (
+    <ul>
+      {
+        props.jobs.map((job) => {
+          return <li key={ job.id }>{ job.title }</li>
+        })
+      }
+    </ul>
+  )
+}
+
+export default JobList;
+
+```
+
+--
+
+What's happening?
+
+--
+
+1. We created a functional component called `JobList`, which returns JSX.
+
+---
+
+## Functional Component (part 2)
+
+Why is this component a function and not a class?
+
+--
+
+*stateless!*
+
+--
+
+Okay. But how is it getting state?
+
+--
+
+*props!*
+
+--
+
+What are Props? Props vs State?
+
+--
+
+1. Props - data flows down via `props` (from `state` to `props`), read only
+1. State - data tied to a component, read and write
+
+---
+
+## Functional Component (part 3)
+
+Let's give the sub component access to state. Add the import to *index.js*:
+
+```javascript
+import JobList from './components/JobList';
+```
+
+Update `render()`:
+
+```javascript
+render() {
+  return (
+    <div className="container">
+      <h1>Node Jobs</h1>
+      <JobList jobs={ this.state.jobs }/>
+    </div>
+  )
+}
+```
+
+--
+
+What's happening?
+
+--
+
+1. State is being passed to the `JobList` component as a `prop`
+
+---
+
+## Functional Component (part 4)
+
+Let's convert the list to a table and add some style...
+
+---
+
+## Cheers!
 
 Questions?
-
---
-
-Send us money:
-
-1. michael@mherman.org
-1. caleb@yobigjohnstuff.com
-
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
