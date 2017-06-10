@@ -76,15 +76,10 @@ class: center, middle
 
 ## Inherited Jank
 
-What does this app do?
-
---
-
-### App Component View:
+### App Components
 
 Parent Component is the "Grid Container"...
-
-<img src="./images/react_talk.svg" alt="react components" style="width:100%;">
+<img src="./images/react_talk.svg" alt="react components" style="width:85%;">
 
 ---
 
@@ -163,7 +158,7 @@ class GridContainer extends Component {
 
 ## Working Solution!
 
-#### stuttered shallow check in parent component functions:
+#### Stuttered shallow check in parent component functions:
 
 ```javascript
 class GridContainer extends Component {
@@ -185,7 +180,7 @@ Three is the magic number.
 
 ## Watch those keys!
 
-Initially keys were created in the child components using Universal Unique ID's:
+#### Initially keys were created in the child components using Universal Unique ID's:
 
 ```javascipt
 import uuid from 'uuid';
@@ -194,7 +189,6 @@ class ColumnHeadersContainer extends Component {
   ...
   render() {
     let {columns} = this.props;
-
     const HeaderList = columns.map((column) => {
       return (
         <GridItem
@@ -244,7 +238,7 @@ class GridContainer extends Component {
 
 ## And we're done!
 
-<img src="./images/angry_cat.png" alt="that cat ain't happy" style="width:50%;">
+<img src="./images/angry_cat.png" alt="that cat ain't happy" style="width:40%;">
 
 (This is the cat I live with.)
 
@@ -268,7 +262,7 @@ class GridContainer extends Component {
 
 ## Part 2
 
-yay!
+✌️
 
 ---
 
