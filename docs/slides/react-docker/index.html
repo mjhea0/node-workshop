@@ -525,7 +525,7 @@ services:
 
 So-
 
-- `args` are added during the Docker image build, which we grab (`ARG REACT_APP_TEST`) and then set as an env variable (`ENV REACT_APP_TEST=$REACT_APP_TEST`)
+- `args` are added during the Docker image build, which we grab (`ARG REACT_APP_TEST`) and then set as an env variable (`ENV REACT_APP_TEST=$REACT_APP_TEST`) in *Dockerfile-stage*
 
 --
 
@@ -539,14 +539,6 @@ Remove the `console log` and add the following to the `render()`:
 
 ```javascript
 <p>{process.env.REACT_APP_TEST}</p>
-```
-
---
-
-Bring down the dev container:
-
-```sh
-$ docker-compose down
 ```
 
 --
