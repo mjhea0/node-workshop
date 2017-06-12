@@ -414,7 +414,7 @@ Volumes are used to mount a directory inside a container so that you can make mo
 
 --
 
-To prevent the volume - `/usr/src/app` - from overriding the *node_modules*, we used a data volume - `/usr/src/app/node_modules`. This may or may not be necessary, depending on the order in which you set up your image and containers. Check out [Getting npm packages to be installed with docker-compose](http://dchua.com/2016/02/07/getting-npm-packages-to-be-installed-with-docker-compose/) for more.
+> **NOTES:** To prevent the volume - `/usr/src/app` - from overriding the *node_modules*, we used a data volume - `/usr/src/app/node_modules`. This may or may not be necessary, depending on the order in which you set up your image and containers. Check out [Getting npm packages to be installed with docker-compose](http://dchua.com/2016/02/07/getting-npm-packages-to-be-installed-with-docker-compose/) for more.
 
 --
 
@@ -573,6 +573,7 @@ Test - [http://localhost:3337](http://localhost:3337)
 What else would you like to see?
 
 1. Change build context to GitHub repo
+1. Docker Machine basics
 1. Deploy to EC2 and/or Digital Ocean
 1. Debug dev app with Docker Logs
 
