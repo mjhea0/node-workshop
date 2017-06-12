@@ -81,6 +81,7 @@ Parent Component is the "Grid Container"...
 
 ## Problems
 
+1. Scrolling needed to be synchronized between sibling components using `scrollTop` and `scrollLeft` element properties.
 1. Each time a scroll event was initiated on a child component, the parent component must (re)render all child components.
 1. With 30 rows and 30 columns as an example, 960 virtual dom nodes must be (re)rendered. As scrolling happens MANY times per second, this becomes extremely expensive.
 1. JANK!
@@ -105,6 +106,14 @@ class GridContainer extends Component {constructor(props) {
 
 ---
 
+## Attempted Solution 1 (continued...)
+
+#### Result:
+
+<video src="./videos/lodash_throttle.mov" autoplay loop style="width:100%;">
+
+---
+
 ## Attempted Solution 2
 
 #### `react-throttle` package in child component elements:
@@ -120,11 +129,11 @@ class GridBody extends Component {
       handler="onScroll"
     >
       <div
-        className="x-headers-container"
+        className="row-headers-container"
         ref={(c) => { this.position = c; }}
         onScroll={this.handleScroll}
       >
-        <div className="x-headers-subcontainer">
+        <div className="row-headers-subcontainer">
           {HeaderList}
         </div>
       </div>
@@ -135,9 +144,17 @@ class GridBody extends Component {
 
 ---
 
+## Attempted Solution 2 (continued...)
+
+#### Result
+
+<video src="./videos/react_throttle2.mov" autoplay loop style="width:100%;">
+
+---
+
 ## Attempted Solution 3
 
-#### `setTimeout` in parent component constructor:
+#### `setTimeout` in parent component component:
 
 ```javascipt
 class GridContainer extends Component {
@@ -147,8 +164,19 @@ class GridContainer extends Component {
     this.horizontalScroll = setTimeout(this.horizontalScroll.bind(this), 10);
   }
   ...
+  verticalScroll(scrollTop) {
+    setTimeout(this.setState({scrollTop}), 100);
+  }
 }
 ```
+
+---
+
+## Attempted Solution 3 (continued...)
+
+#### Result:
+
+<video src="./videos/settimeout.mov" autoplay loop style="width:100%;">
 
 ---
 
@@ -167,10 +195,6 @@ class GridContainer extends Component {
   }
 }
 ```
-
---
-
-Three is the magic number.
 
 ---
 
@@ -195,39 +219,6 @@ class ColumnHeadersContainer extends Component {
     });
   }
 }
-```
-
----
-
-## Solution
-
-#### Set static keys in parent component, then pass as props to children:
-
-```javascript
-import uuid from 'uuid';
-
-class GridContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rows: 30,
-      columns: 30,
-      columnKeys: []
-    }
-  }
-
-  componentWillMount() {
-    let {rows, columns} = this.state;
-    this.generateKeys(rows, columns);
-  }
-
-  generateKeys(rows, columns) {
-    let columnKeys = [];
-    this.generateLoop(columnKeys, columns);
-    this.setState({
-      columnKeys: columnKeys
-    });
-  }
 ```
 
 ---
