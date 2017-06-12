@@ -352,7 +352,7 @@ Be sure to take advantage of Docker's layered cache system, to speed up build ti
 Build the image, and then spin up the container in [detached](https://docs.docker.com/engine/reference/run/#detached--d) mode:
 
 ```sh
-$ docker build -t "react-denver"
+$ docker build -t "react-denver" .
 $ docker run -d -p 3333:3000 react-denver
 ```
 
@@ -591,8 +591,7 @@ What else would you like to see?
 
 What's next?
 
-1. Slides - http://mherman.org/microservice-movies
-1. Code - https://github.com/mjhea0/microservice-movies
+1. Slides - http://mherman.org/node-workshop/slides/react-docker
 1. [testdriven.io](http://testdriven.io/)
 
 --
