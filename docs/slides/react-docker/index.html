@@ -76,21 +76,9 @@ class: center, middle
 #### Visual Artist
 
 ---
-## Inherited Jank
 
-### Objectives:
+## Inherited Jank:
 
-By the end of this talk you should be able to:
-
-1. Know when React component re-rendering causes jank.
-
-1. Look for a solution.
-
-1. Implement a solution.
-
----
-
-### App Component View:
 Parent Component is "Grid Container".
 <img src="./images/react_talk.svg" alt="broken?" style="width:100%;">
 
@@ -98,11 +86,13 @@ Parent Component is "Grid Container".
 
 ### Problems:
 
-1. Each time a scroll event was initiated on a child component, the parent component must render all child components.
+1. Scrolling needed to be synchronized between sibling components using scrollTop and scrollLeft element properties.
+
+1. Each time a scroll event was initiated on a child component, the parent component renders all child components.
 
 1. With 30 rows and 30 columns as an example, 960 virtual dom nodes must be rendered. As scrolling happens MANY times per second, this becomes extremely expensive.
 
-3. JANK!
+1. JANK!
 
 ---
 ### Attempted Solutions:
@@ -121,7 +111,17 @@ class GridContainer extende Component {constructor(props) {
 }
 
 ```
+
 ---
+
+### Attempted Solutions (continued):
+
+#### Result:
+
+<video src="./videos/lodash_throttle.mov" autoplay loop style="width:100%;">
+
+---
+
 ### Attempted Solutions (continued):
 
 #### Using react-throttle package in child component elements:
@@ -137,11 +137,11 @@ class GridBody extends Component {
       handler="onScroll"
     >
       <div
-        className="x-headers-container"
+        className="row-headers-container"
         ref={(c) => { this.position = c; }}
         onScroll={this.handleScroll}
       >
-        <div className="x-headers-subcontainer">
+        <div className="row-headers-subcontainer">
           {HeaderList}
         </div>
       </div>
@@ -154,18 +154,33 @@ class GridBody extends Component {
 
 ### Attempted Solutions (continued):
 
+#### Result:
+
+<video src="./videos/react_throttle2.mov" autoplay loop style="width:100%;">
+
+---
+
+### Attempted Solutions (continued):
+
 #### Using setTimeout in parent component constructor:
+
 ```js
 class GridContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.verticalScroll = setTimeout(this.verticalScroll.bind(this), 10);
-    this.horizontalScroll = setTimeout(this.horizontalScroll.bind(this), 10);
-  }
   ...
+  verticalScroll(scrollTop) {
+    setTimeout(this.setState({scrollTop}), 100);
+  }
 }
 ```
+
+---
+
+### Attempted Solutions (continued):
+
+#### Result:
+
+<video src="./videos/settimeout.mov" autoplay loop style="width:100%;">
+
 ---
 
 ### Working solution:
@@ -211,72 +226,6 @@ class ColumnHeadersContainer extends Component {
   }
 }
 ```
-
----
-
-### Set static keys in parent component, then pass as props to children:
-
-```js
-import uuid from 'uuid';
-
-class GridContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      rows: 30,
-      columns: 30,
-      columnKeys: []
-    }
-  }
-
-  componentWillMount() {
-    let {rows, columns} = this.state;
-
-    this.generateKeys(rows, columns);
-  }
-
-  generateKeys(rows, columns) {
-    let columnKeys = [];
-
-    this.generateLoop(columnKeys, columns);
-
-    this.setState({
-      columnKeys: columnKeys
-    });
-  }
-
-```
-
----
-
-### Create keys in parent component and pass as props to children (continued):
-
-```js
-  generateLoop(output, input, input2 = 1) {
-    for (var i = 0; i < (input * input2); i ++) {
-      let key = uuid.v4();
-      output.push(key);
-    };
-    return output;
-  }
-
-  render() {
-    let {columnKeys} = this.state;
-
-    return (
-      <div className="main-grid-container">
-        <ColumnHeadersContainer
-          columnKeys={columnKeys}
-          horizontalScroll={this.horizontalScroll}
-          scrollLeft={scrollLeft}
-        />
-      </div>
-    );
-  }
-}
-```
-
 ---
 
 ## And we're done!
