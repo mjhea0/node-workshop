@@ -82,8 +82,11 @@ Parent Component is the "Grid Container"...
 ## Problems
 
 1. Scrolling needed to be synchronized between sibling components using `scrollTop` and `scrollLeft` element properties.
+
 1. Each time a scroll event was initiated on a child component, the parent component must (re)render all child components.
+
 1. With 30 rows and 30 columns as an example, 960 virtual dom nodes must be (re)rendered. As scrolling happens MANY times per second, this becomes extremely expensive.
+
 1. JANK!
 
 ---
@@ -154,15 +157,10 @@ class GridBody extends Component {
 
 ## Attempted Solution 3
 
-#### `setTimeout` in parent component component:
+#### `setTimeout` in parent component:
 
 ```javascipt
 class GridContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.verticalScroll = setTimeout(this.verticalScroll.bind(this), 10);
-    this.horizontalScroll = setTimeout(this.horizontalScroll.bind(this), 10);
-  }
   ...
   verticalScroll(scrollTop) {
     setTimeout(this.setState({scrollTop}), 100);
